@@ -10,7 +10,6 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header class="site-header">
     <div class="header-inner">
       <div class="header-brand">
@@ -24,7 +23,6 @@
     </div>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
     <pre class="hero-ascii" aria-hidden="true">
  ____                              _   _       _
@@ -37,7 +35,6 @@
     <p class="hero-stats"><strong id="template-count">0</strong> templates available</p>
   </section>
 
-  <!-- Filter Bar -->
   <div class="filter-bar">
     <div class="search-box">
       <span class="search-icon">&#x1F50D;</span>
@@ -68,16 +65,16 @@
     </div>
   </div>
 
-  <!-- Card Grid -->
   <main class="card-grid" id="card-grid">
     <!-- Cards rendered by JS -->
   </main>
 
-  <!-- Detail Modal -->
   <div class="modal-overlay" id="modal-overlay">
     <div class="modal" id="modal">
       <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
-      <img class="modal-image" id="modal-image" src="" alt="">
+      <a class="modal-image-link" id="modal-image-link" href="#" target="_blank" rel="noopener">
+        <img class="modal-image" id="modal-image" src="" alt="">
+      </a>
       <div class="modal-body">
         <h2 id="modal-title"></h2>
         <p class="modal-subtitle" id="modal-subtitle"></p>
@@ -90,6 +87,7 @@
           <div class="modal-meta-item"><span class="label">Aspect: </span><span id="modal-aspect"></span></div>
           <div class="modal-meta-item"><span class="label">Updated: </span><span id="modal-updated"></span></div>
         </div>
+        <div class="modal-links" id="modal-links" hidden></div>
         <div class="modal-install-box">
           <code id="modal-install-cmd"></code>
           <button class="copy-btn" id="modal-copy-btn">Copy</button>
@@ -98,7 +96,6 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-links">
       <a href="https://github.com/nano-banana-hub">GitHub</a>
