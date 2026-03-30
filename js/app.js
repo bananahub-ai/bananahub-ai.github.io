@@ -521,7 +521,7 @@ function renderCard(template) {
         <div class="card-meta-inline">
           <span>${escHtml(template.difficulty || 'beginner')}</span>
           <span>${escHtml(template.aspect || 'n/a')}</span>
-          <span data-stat-key="${escAttr(key)}" data-stat-type="trending">${escHtml(getTrendingDisplay(stats))} 24h</span>
+          <span data-stat-key="${escAttr(key)}" data-stat-type="trending">${escHtml(getTrendingDisplay(stats))} installs / 24h</span>
         </div>
 
         <div class="card-actions">

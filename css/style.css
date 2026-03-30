@@ -677,6 +677,7 @@ main {
 .card-top-badges-right {
   display: flex;
   flex-wrap: wrap;
+  min-width: 0;
   gap: 8px;
 }
 
@@ -691,14 +692,17 @@ main {
 .card-aspect-badge {
   display: inline-flex;
   align-items: center;
-  min-height: 24px;
-  padding: 0 8px;
+  min-height: 22px;
+  padding: 0 7px;
   border-radius: 999px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.66rem;
+  font-size: 0.62rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-official-badge {
@@ -887,6 +891,7 @@ main {
   font-size: 0.76rem;
   text-align: center;
   white-space: nowrap;
+  line-height: 1;
 }
 
 .card-action-stat {
@@ -921,6 +926,13 @@ main {
 .copy-btn.copied {
   background: var(--olive);
   border-color: var(--olive);
+}
+
+.copy-btn-compact {
+  flex: 0 0 auto;
+  min-height: 30px;
+  padding: 0 10px;
+  font-size: 0.72rem;
 }
 
 .card-source-link {
@@ -1402,10 +1414,15 @@ main {
 }
 
 .modal-install-box code {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
   font-size: 0.94rem;
-  line-height: 1.5;
-  word-break: break-word;
+  line-height: 1.4;
+  white-space: nowrap;
+  word-break: normal;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
 }
 
 .lightbox-overlay {
@@ -1598,8 +1615,12 @@ main {
   }
 
   .modal-install-box {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .copy-btn-compact {
+    width: auto;
   }
 }
 
