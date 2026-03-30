@@ -492,11 +492,15 @@ function renderCard(template) {
         </div>
         ${hasSampleImage ? `<img data-src="${escAttr(template.sample_image)}" alt="${escAttr(title)}" loading="lazy">` : ''}
         <div class="card-top-badges">
-          ${template.pinned ? '<span class="card-flag-badge">Pinned</span>' : ''}
-          ${template.featured ? `<span class="card-flag-badge">${escHtml(template.featured_label || 'Featured')}</span>` : ''}
-          ${template.official ? '<span class="card-official-badge">Official</span>' : '<span class="card-official-badge">Community</span>'}
-          <span class="card-source-badge">${escHtml(template.catalog_source || 'curated')}</span>
-          <span class="card-profile-badge">${escHtml(template.profile || 'general')}</span>
+          <div class="card-top-badges-left">
+            ${template.pinned ? '<span class="card-flag-badge">Pinned</span>' : ''}
+            ${template.featured ? `<span class="card-flag-badge">${escHtml(template.featured_label || 'Featured')}</span>` : ''}
+            ${template.official ? '<span class="card-official-badge">Official</span>' : '<span class="card-official-badge">Community</span>'}
+            <span class="card-source-badge">${escHtml(template.catalog_source || 'curated')}</span>
+          </div>
+          <div class="card-top-badges-right">
+            <span class="card-profile-badge">${escHtml(template.profile || 'general')}</span>
+          </div>
         </div>
         <span class="card-aspect-badge">${escHtml(template.aspect || 'n/a')}</span>
       </div>
@@ -507,11 +511,6 @@ function renderCard(template) {
             <p class="card-eyebrow">${escHtml(template.id)}</p>
             <div class="card-title">${escHtml(title)}</div>
             <div class="card-subtitle">${escHtml(subtitle || template.repo)}</div>
-          </div>
-
-          <div class="card-inline-stat">
-            <span class="card-inline-stat-value" data-stat-key="${escAttr(key)}" data-stat-type="installs">${escHtml(getInstallDisplay(stats))}</span>
-            <small>installs</small>
           </div>
         </div>
 
@@ -526,6 +525,10 @@ function renderCard(template) {
         </div>
 
         <div class="card-actions">
+          <span class="card-action-stat" aria-label="${escAttr(`${getInstallDisplay(stats)} installs`)}">
+            <span class="card-action-stat-value" data-stat-key="${escAttr(key)}" data-stat-type="installs">${escHtml(getInstallDisplay(stats))}</span>
+            <small>installs</small>
+          </span>
           <button class="copy-btn" data-cmd="${escAttr(template.install_cmd)}" type="button">Copy install</button>
           <a class="card-source-link" href="${escAttr(sourceUrl)}" target="_blank" rel="noopener">Source</a>
         </div>

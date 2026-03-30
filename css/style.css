@@ -668,9 +668,20 @@ main {
   left: 8px;
   right: 8px;
   z-index: 1;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 8px;
+}
+
+.card-top-badges-left,
+.card-top-badges-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.card-top-badges-right {
+  justify-content: flex-end;
 }
 
 .card-official-badge,
@@ -687,6 +698,7 @@ main {
   font-size: 0.66rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  max-width: 100%;
 }
 
 .card-official-badge {
@@ -695,7 +707,6 @@ main {
 }
 
 .card-profile-badge {
-  margin-left: auto;
   background: rgba(28, 33, 28, 0.72);
   color: #f7efdc;
 }
@@ -858,16 +869,46 @@ main {
 
 .card-actions {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
 }
 
+.card-action-stat,
 .copy-btn,
 .card-source-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 34px;
   padding: 0 11px;
   border-radius: 999px;
   text-decoration: none;
   font-size: 0.76rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.card-action-stat {
+  gap: 7px;
+  padding-inline: 12px;
+  border: 1px solid rgba(28, 33, 28, 0.12);
+  background: rgba(28, 33, 28, 0.05);
+  color: var(--ink-soft);
+}
+
+.card-action-stat small {
+  color: var(--ink-faint);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.card-action-stat-value {
+  color: var(--ink);
+  font-family: 'Fraunces', serif;
+  font-size: 0.96rem;
+  line-height: 1;
 }
 
 .copy-btn {
@@ -1523,7 +1564,16 @@ main {
     align-items: stretch;
   }
 
+  .card-top-badges {
+    grid-template-columns: 1fr;
+  }
+
+  .card-top-badges-right {
+    justify-content: flex-start;
+  }
+
   .button,
+  .card-action-stat,
   .copy-btn,
   .card-source-link,
   .link-button,
