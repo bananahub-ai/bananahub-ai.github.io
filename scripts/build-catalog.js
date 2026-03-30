@@ -373,6 +373,7 @@ function buildRobotsTxt() {
 function buildSitemapXml(generatedAt) {
   const urls = [
     `${SITE_URL}/`,
+    `${SITE_URL}/about.html`,
     `${SITE_URL}/${GENERATED_FILES.catalog}`,
     `${SITE_URL}/${GENERATED_FILES.llms}`,
     `${SITE_URL}/${GENERATED_FILES.agentCatalog}`
