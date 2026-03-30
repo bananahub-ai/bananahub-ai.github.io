@@ -226,7 +226,7 @@ function renderLoadError() {
   dom.resultCount.textContent = '0';
   dom.officialCount.textContent = '0';
   dom.resultsSummary.textContent = 'The catalog could not be loaded.';
-  dom.catalogHint.textContent = 'Refresh the page or open catalog.json directly to inspect the latest generated data.';
+  dom.catalogHint.textContent = 'Refresh the page or open catalog.json directly to inspect the generated catalog.';
   dom.grid.innerHTML = [
     '<div class="card-empty">',
     '<p>Failed to load templates.</p>',
@@ -397,25 +397,27 @@ function updateResultsPanel() {
   dom.officialCount.textContent = formatCount(visibleOfficialCount);
 
   if (visibleTemplates.length > 0) {
-    const summaryBits = [
-      `Showing ${formatCount(visibleTemplates.length)} template${visibleTemplates.length === 1 ? '' : 's'}`,
-      `across ${formatCount(visibleProfileCount)} profile${visibleProfileCount === 1 ? '' : 's'}`,
-      `sorted by ${currentSort === 'trending' ? '24h trending activity' : 'all-time installs'}`
-    ];
+    const summaryBits = [`${formatCount(visibleTemplates.length)} template${visibleTemplates.length === 1 ? '' : 's'}`];
+
+    if (visibleProfileCount > 0) {
+      summaryBits.push(`${formatCount(visibleProfileCount)} profile${visibleProfileCount === 1 ? '' : 's'}`);
+    }
+
+    summaryBits.push(currentSort === 'trending' ? 'sorted by 24h trend' : 'sorted by installs');
 
     if (activeDetails.length > 0) {
       summaryBits.push(`filtered by ${activeDetails.join(', ')}`);
     }
 
-    dom.resultsSummary.textContent = `${summaryBits.join(', ')}.`;
+    dom.resultsSummary.textContent = summaryBits.join(' · ');
   } else {
     dom.resultsSummary.textContent = 'No templates match the current search and filter combination.';
   }
 
   if (hasActiveState()) {
-    dom.catalogHint.textContent = 'This filtered view is encoded in URL query params, so you can share it directly.';
+    dom.catalogHint.textContent = 'The current gallery view is encoded in the URL, so you can share this exact filter state.';
   } else {
-    dom.catalogHint.textContent = `Catalog refreshed ${formatDate(catalog?.generated)} UTC. Install commands stay aligned with the bananahub CLI.`;
+    dom.catalogHint.textContent = `Click a card for the full brief, or use the install button directly. Catalog refreshed ${formatDate(catalog?.generated)} UTC.`;
   }
 
   dom.clearFilters.hidden = !hasActiveState();
@@ -436,13 +438,12 @@ function renderCard(template) {
   const title = template.title_en || template.title || template.id;
   const subtitle = template.title && template.title !== title ? template.title : '';
   const tagsHtml = (template.tags || [])
-    .slice(0, 5)
+    .slice(0, 4)
     .map((tag) => `<span class="tag">${escHtml(tag)}</span>`)
     .join('');
   const hasSampleImage = Boolean(template.sample_image);
   const previewLabel = hasSampleImage ? 'Loading preview' : 'Preview unavailable';
   const sourceUrl = template.template_url || template.repo_url || '#';
-  const description = trimText(template.description || 'No description provided yet.', 170);
 
   return `
     <article
@@ -458,46 +459,40 @@ function renderCard(template) {
           <span class="card-image-placeholder-label">${escHtml(previewLabel)}</span>
         </div>
         ${hasSampleImage ? `<img data-src="${escAttr(template.sample_image)}" alt="${escAttr(title)}" loading="lazy">` : ''}
+        <div class="card-top-badges">
+          ${template.official ? '<span class="card-official-badge">Official</span>' : '<span class="card-official-badge">Community</span>'}
+          <span class="card-profile-badge">${escHtml(template.profile || 'general')}</span>
+        </div>
         <span class="card-aspect-badge">${escHtml(template.aspect || 'n/a')}</span>
-        ${template.official ? '<span class="card-official-badge">Official</span>' : ''}
       </div>
 
-      <div class="card-meta-row">
-        <p class="card-eyebrow">${template.official ? 'Official catalog entry' : 'Community catalog entry'}</p>
-        <span class="card-id">${escHtml(template.id)}</span>
-      </div>
-
-      <div class="card-heading">
-        <div class="card-title">${escHtml(title)}</div>
-        <div class="card-subtitle">${escHtml(subtitle || `Source: ${template.repo}`)}</div>
-      </div>
-
-      <p class="card-description">${escHtml(description)}</p>
-
-      <div class="card-badges">
-        ${renderBadge(`badge badge-profile ${escAttr(template.profile || 'general')}`, template.profile || 'general')}
-        ${renderBadge('badge badge-difficulty', template.difficulty || 'beginner')}
-      </div>
-
-      <div class="card-tags">
-        ${tagsHtml || '<span class="tag">No tags</span>'}
-      </div>
-
-      <div class="card-footer">
-        <dl class="card-stats">
-          <div>
-            <dt>Installs</dt>
-            <dd data-stat-key="${escAttr(key)}" data-stat-type="installs">${escHtml(getInstallDisplay(stats))}</dd>
+      <div class="card-body">
+        <div class="card-head">
+          <div class="card-title-stack">
+            <p class="card-eyebrow">${escHtml(template.id)}</p>
+            <div class="card-title">${escHtml(title)}</div>
+            <div class="card-subtitle">${escHtml(subtitle || template.repo)}</div>
           </div>
-          <div>
-            <dt>24h trend</dt>
-            <dd data-stat-key="${escAttr(key)}" data-stat-type="trending">${escHtml(getTrendingDisplay(stats))}</dd>
+
+          <div class="card-inline-stat">
+            <span class="card-inline-stat-value" data-stat-key="${escAttr(key)}" data-stat-type="installs">${escHtml(getInstallDisplay(stats))}</span>
+            <small>installs</small>
           </div>
-        </dl>
+        </div>
+
+        <div class="card-tags">
+          ${tagsHtml || '<span class="tag">No tags</span>'}
+        </div>
+
+        <div class="card-meta-inline">
+          <span>${escHtml(template.difficulty || 'beginner')}</span>
+          <span>${escHtml(template.aspect || 'n/a')}</span>
+          <span data-stat-key="${escAttr(key)}" data-stat-type="trending">${escHtml(getTrendingDisplay(stats))} 24h</span>
+        </div>
 
         <div class="card-actions">
-          <a class="card-source-link" href="${escAttr(sourceUrl)}" target="_blank" rel="noopener">Open source</a>
           <button class="copy-btn" data-cmd="${escAttr(template.install_cmd)}" type="button">Copy install</button>
+          <a class="card-source-link" href="${escAttr(sourceUrl)}" target="_blank" rel="noopener">Source</a>
         </div>
       </div>
     </article>
@@ -837,15 +832,6 @@ function formatDate(value) {
     year: 'numeric',
     timeZone: 'UTC'
   }).format(date);
-}
-
-function trimText(value, limit) {
-  const text = String(value || '').trim();
-  if (!text || text.length <= limit) {
-    return text;
-  }
-
-  return `${text.slice(0, limit - 1).trimEnd()}…`;
 }
 
 function escHtml(value) {

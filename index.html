@@ -52,29 +52,25 @@
 
         <nav class="header-links" aria-label="Primary">
           <a href="#catalog-section">Catalog</a>
-          <a href="#agent-access">For Agents</a>
           <a href="https://github.com/nano-banana-hub/nanobanana/blob/main/references/template-system.md" target="_blank" rel="noopener">Template System</a>
           <a href="https://github.com/nano-banana-hub">GitHub</a>
+          <a href="#agent-access">For Agents</a>
         </nav>
       </div>
     </header>
 
     <main id="top">
-      <section class="hero">
+      <section class="hero hero-compact">
         <div class="hero-copy">
-          <p class="eyebrow">Human-friendly gallery. Agent-friendly index.</p>
-          <h1>Plug prompt templates into Nano Banana Skill without bloating the base skill.</h1>
+          <p class="eyebrow">Gallery First. Docs Second.</p>
+          <h1>See the templates first, then install the one that matches.</h1>
           <p class="hero-lead">
-            BananaHub is a progressive-disclosure template library for Nano Banana Skill. Discover focused prompt recipes,
-            install only what you need, and let the skill surface them only when a request actually matches.
+            BananaHub is a visual gallery of installable prompt modules for Nano Banana Skill. Scan the generated look,
+            compare focused use cases, and copy an install command when a template actually fits the job.
           </p>
+        </div>
 
-          <div class="hero-actions">
-            <a class="button button-primary" href="#catalog-section">Browse live catalog</a>
-            <a class="button button-secondary" href="llms.txt">Open llms.txt</a>
-            <a class="button button-tertiary" href="catalog.json">Open catalog.json</a>
-          </div>
-
+        <aside class="hero-rail" aria-label="Catalog quick stats">
           <ul class="hero-metrics" aria-label="Catalog metrics">
             <li>
               <span id="template-count">0</span>
@@ -86,116 +82,37 @@
             </li>
             <li>
               <span id="catalog-generated">Loading</span>
-              <small>catalog freshness</small>
+              <small>last rebuild</small>
             </li>
           </ul>
-        </div>
 
-        <aside class="hero-panel" aria-labelledby="agent-panel-title">
-          <p class="panel-kicker">Agent Access</p>
-          <h2 id="agent-panel-title">If an agent needs this hub, start with the stable files.</h2>
-
-          <ol class="agent-steps">
-            <li>Read <a href="llms.txt">llms.txt</a> for curated entry points and ecosystem links.</li>
-            <li>Use <a href="catalog.json">catalog.json</a> for structured discovery, install commands, and source URLs.</li>
-            <li>Open <a href="agent-catalog.md">agent-catalog.md</a> for a markdown digest of the current catalog.</li>
-            <li>Install with <code>bananahub add owner/repo/template-id</code>.</li>
-          </ol>
-
-          <div class="agent-code-block">
-            <p class="agent-code-label">Suggested install pattern</p>
-            <code>bananahub add nano-banana-hub/nanobanana/cute-sticker</code>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#catalog-section">Open live gallery</a>
+            <a class="button button-secondary" href="https://github.com/nano-banana-hub">Browse GitHub</a>
+            <a class="button button-tertiary" href="#agent-access">Agent files</a>
           </div>
 
-          <p class="agent-note">
-            BananaHub is aligned with Nano Banana's progressive-disclosure model: frontmatter stays lightweight for matching,
-            while the full template body is only read when a template is activated.
+          <p class="hero-note">
+            Humans should land in the gallery. Machine-readable entry points are still available, but they do not need to dominate
+            the first screen.
           </p>
         </aside>
-      </section>
-
-      <section class="manifesto" aria-labelledby="manifesto-title">
-        <div class="section-heading">
-          <p class="section-kicker">Why BananaHub Exists</p>
-          <h2 id="manifesto-title">A template hub built for progressive loading, not template dumping.</h2>
-          <p>
-            The goal is not to flood Nano Banana Skill with every prompt variation. The goal is to keep the core skill lean,
-            let templates live in GitHub, and expose clear discovery paths for humans, agents, and template authors.
-          </p>
-        </div>
-
-        <div class="principle-grid">
-          <article class="principle-card">
-            <p class="principle-index">01</p>
-            <h3>Install only the capability you need</h3>
-            <p>
-              Templates are hot-pluggable. Users do not need to ship every domain recipe up front, and Nano Banana can stay
-              focused until a real request calls for more.
-            </p>
-          </article>
-
-          <article class="principle-card">
-            <p class="principle-index">02</p>
-            <h3>Use tiered discovery instead of one giant prompt file</h3>
-            <p>
-              Lightweight frontmatter powers listing and matching. Richer body content remains in the source template and is
-              pulled only when activation happens.
-            </p>
-          </article>
-
-          <article class="principle-card">
-            <p class="principle-index">03</p>
-            <h3>Give agents a first-class interface, not a hidden afterthought</h3>
-            <p>
-              The homepage is readable, but machine-readable files are linked directly so an agent can search, compare, and
-              install templates without scraping visual UI.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="access-strip" id="agent-access" aria-labelledby="access-title">
-        <div class="section-heading">
-          <p class="section-kicker">Machine-Readable Entry Points</p>
-          <h2 id="access-title">Prefer these resources over scraping cards.</h2>
-        </div>
-
-        <div class="access-grid">
-          <a class="access-card" href="llms.txt">
-            <span class="access-label">Curated entry point</span>
-            <h3>/llms.txt</h3>
-            <p>Short overview for LLMs and agents. Includes purpose, canonical files, install pattern, and ecosystem docs.</p>
-          </a>
-
-          <a class="access-card" href="agent-catalog.md">
-            <span class="access-label">Markdown digest</span>
-            <h3>/agent-catalog.md</h3>
-            <p>Readable summary of current templates with profile, tags, install command, source URL, and sample URL.</p>
-          </a>
-
-          <a class="access-card" href="catalog.json">
-            <span class="access-label">Structured feed</span>
-            <h3>/catalog.json</h3>
-            <p>Machine-readable catalog for search, ranking, previews, and deterministic installs across the Nano Banana ecosystem.</p>
-          </a>
-        </div>
       </section>
 
       <section class="catalog-shell" id="catalog-section" aria-labelledby="catalog-title">
         <div class="catalog-intro">
           <div>
             <p class="section-kicker">Live Catalog</p>
-            <h2 id="catalog-title">Browse installable templates</h2>
+            <h2 id="catalog-title">A dense visual gallery of installable templates</h2>
             <p id="results-summary">
-              Search by use case, bilingual tags, author, or difficulty. Every card links back to the source template and exposes
-              a one-click install command.
+              Scan the image first, then use the title, tags, and install button to move fast. Open any card for the full brief.
             </p>
           </div>
 
           <div class="catalog-status" aria-label="Catalog status">
             <div class="status-pill">
               <span id="result-count">0</span>
-              <small>matches</small>
+              <small>shown</small>
             </div>
             <div class="status-pill">
               <span id="official-count">0</span>
@@ -250,12 +167,89 @@
         </div>
 
         <div class="catalog-helper">
-          <p id="catalog-hint">URL query params keep the current search view shareable.</p>
+          <p id="catalog-hint">Use search and profile chips to narrow the gallery, then copy install directly from a card.</p>
           <button class="link-button" id="clear-filters" type="button" hidden>Reset filters</button>
         </div>
 
         <div class="card-grid" id="card-grid" aria-live="polite">
           <!-- Cards rendered by JS -->
+        </div>
+      </section>
+
+      <details class="agent-drawer" id="agent-access">
+        <summary class="agent-summary">
+          <span class="section-kicker">For Agents</span>
+          <span class="agent-summary-title">Need machine-readable access instead of the visual gallery?</span>
+          <span class="agent-summary-note">
+            Open this panel for `llms.txt`, `agent-catalog.md`, `catalog.json`, and the deterministic install pattern.
+          </span>
+        </summary>
+
+        <div class="agent-drawer-body">
+          <div class="access-grid">
+            <a class="access-card" href="llms.txt">
+              <span class="access-label">Curated entry point</span>
+              <h3>/llms.txt</h3>
+              <p>Short LLM-oriented overview with canonical files, install conventions, and ecosystem links.</p>
+            </a>
+
+            <a class="access-card" href="agent-catalog.md">
+              <span class="access-label">Markdown digest</span>
+              <h3>/agent-catalog.md</h3>
+              <p>Readable template summary with profile, tags, source links, preview URLs, and install command.</p>
+            </a>
+
+            <a class="access-card" href="catalog.json">
+              <span class="access-label">Structured feed</span>
+              <h3>/catalog.json</h3>
+              <p>Machine-readable catalog for search, ranking, previews, and deterministic installs.</p>
+            </a>
+          </div>
+
+          <div class="agent-code-block">
+            <p class="agent-code-label">Suggested install pattern</p>
+            <code>bananahub add nano-banana-hub/nanobanana/cute-sticker</code>
+          </div>
+        </div>
+      </details>
+
+      <section class="manifesto" aria-labelledby="manifesto-title">
+        <div class="section-heading">
+          <p class="section-kicker">Why BananaHub Exists</p>
+          <h2 id="manifesto-title">A template hub built for progressive loading, not prompt dumping.</h2>
+          <p>
+            BananaHub should feel like a gallery for humans and a stable index for machines. The gallery leads the experience;
+            the machine files stay available without taking over the page.
+          </p>
+        </div>
+
+        <div class="principle-grid">
+          <article class="principle-card">
+            <p class="principle-index">01</p>
+            <h3>Lead with the generated look</h3>
+            <p>
+              People decide from the image, then confirm with title, tags, and install. The gallery should support that flow
+              instead of forcing a docs-first read.
+            </p>
+          </article>
+
+          <article class="principle-card">
+            <p class="principle-index">02</p>
+            <h3>Keep the base skill lean</h3>
+            <p>
+              Templates remain hot-pluggable modules. Install the narrow capability you need and let Nano Banana stay focused
+              until a matching task appears.
+            </p>
+          </article>
+
+          <article class="principle-card">
+            <p class="principle-index">03</p>
+            <h3>Expose stable files without making them the homepage</h3>
+            <p>
+              Agents still get `llms.txt`, `agent-catalog.md`, and `catalog.json`, but humans should not have to parse machine
+              entry points before seeing the work.
+            </p>
+          </article>
         </div>
       </section>
 
