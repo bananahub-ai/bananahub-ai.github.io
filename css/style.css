@@ -711,6 +711,8 @@ main {
 }
 
 .card-profile-badge {
+  padding-inline: 8px;
+  border-radius: 10px;
   background: rgba(28, 33, 28, 0.72);
   color: #f7efdc;
 }
@@ -1355,6 +1357,10 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+#modal-tags {
+  margin-top: 12px;
 }
 
 .modal-meta {
