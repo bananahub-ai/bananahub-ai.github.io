@@ -1,8 +1,17 @@
 # BananaHub
 
-Static site and machine-readable catalog for browsing installable Nano Banana prompt templates.
+Public gallery and machine-readable catalog for installable Nano Banana prompt modules.
 
 Live at: **https://nano-banana-hub.github.io**
+
+## Positioning
+
+BananaHub is the distribution layer for the Nano Banana product:
+
+- Nano Banana handles constraint extraction, progressive guidance, and image generation inside the chat workflow
+- BananaHub handles discovery, preview, installation, and machine-readable access for reusable prompt modules
+
+The goal is not to create one giant prompt dump. The goal is to keep the base workflow lean and let validated prompt structures remain searchable and installable.
 
 ## What gets generated
 
