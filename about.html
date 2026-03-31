@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About BananaHub | Installable Template Network for Nano Banana</title>
+  <title data-i18n="about.meta.title">About BananaHub | Installable Template Network for Nano Banana</title>
   <meta
+    id="meta-description"
     name="description"
+    data-i18n-content="about.meta.description"
     content="Learn how BananaHub fits into the Nano Banana product: a searchable, installable template network for an agent-native image workflow."
   >
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#f2c94c">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nano-banana-hub.github.io/about.html">
-  <meta property="og:title" content="About BananaHub | Installable Template Network for Nano Banana">
+  <meta id="meta-og-title" property="og:title" data-i18n-content="about.meta.ogTitle" content="About BananaHub | Installable Template Network for Nano Banana">
   <meta
+    id="meta-og-description"
     property="og:description"
+    data-i18n-content="about.meta.ogDescription"
     content="What BananaHub is, why it exists, and how humans, authors, and agents should use this installable template network."
   >
   <link rel="canonical" href="https://nano-banana-hub.github.io/about.html">
@@ -27,32 +31,39 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍌</text></svg>">
 </head>
-<body>
-  <a class="skip-link" href="#about-main">Skip to content</a>
+<body data-page="about">
+  <a class="skip-link" href="#about-main" data-i18n="common.skipToContent">Skip to content</a>
 
   <div class="page-shell">
     <header class="site-header">
       <div class="header-inner">
         <a class="header-brand" href="/">
           <span class="brand-badge">BananaHub</span>
-          <span class="brand-note">for Nano Banana Skill</span>
+          <span class="brand-note" data-i18n="common.brandNote">for Nano Banana Skill</span>
         </a>
 
-        <nav class="header-links" aria-label="Primary">
-          <a href="/#catalog-section">Catalog</a>
-          <a href="about.html">About</a>
-          <a href="https://github.com/nano-banana-hub">GitHub</a>
-          <a href="/#agent-access">Agent-Friendly</a>
-        </nav>
+        <div class="header-controls">
+          <nav class="header-links" aria-label="Primary" data-i18n-aria-label="common.primaryNav">
+            <a href="/#catalog-section" data-i18n="common.nav.catalog">Catalog</a>
+            <a href="about.html" data-i18n="common.nav.about">About</a>
+            <a href="https://github.com/nano-banana-hub" data-i18n="common.nav.github">GitHub</a>
+            <a href="/#agent-access" data-i18n="common.nav.agentFriendly">Agent-Friendly</a>
+          </nav>
+
+          <div class="language-switch" role="group" aria-label="Language" data-i18n-aria-label="common.languageSwitcher">
+            <button class="language-button" data-lang-switch="en" type="button" aria-pressed="false">EN</button>
+            <button class="language-button" data-lang-switch="zh-CN" type="button" aria-pressed="false">中文</button>
+          </div>
+        </div>
       </div>
     </header>
 
     <main id="about-main">
       <section class="hero info-hero">
         <div class="hero-copy">
-          <p class="eyebrow">About BananaHub</p>
-          <h1>The installable template network behind Nano Banana.</h1>
-          <p class="hero-lead">
+          <p class="eyebrow" data-i18n="about.hero.eyebrow">About BananaHub</p>
+          <h1 data-i18n="about.hero.title">The installable template network behind Nano Banana.</h1>
+          <p class="hero-lead" data-i18n="about.hero.lead">
             Nano Banana is the agent-native runtime for guided image generation in chat. BananaHub is the searchable,
             installable, machine-readable layer that lets reusable prompt and workflow structures travel without bloating the base skill.
           </p>
@@ -60,12 +71,12 @@
 
         <aside class="hero-rail" aria-label="About quick links">
           <div class="hero-actions">
-            <a class="button button-primary" href="/#catalog-section">Open gallery</a>
-            <a class="button button-secondary" href="https://github.com/nano-banana-hub/nanobanana/blob/main/references/template-system.md" target="_blank" rel="noopener">Template System</a>
-            <a class="button button-tertiary" href="https://github.com/nano-banana-hub/nanobanana/blob/main/references/template-format-spec.md" target="_blank" rel="noopener">Template Format</a>
+            <a class="button button-primary" href="/#catalog-section" data-i18n="about.hero.actions.openGallery">Open gallery</a>
+            <a class="button button-secondary" href="https://github.com/nano-banana-hub/nanobanana/blob/main/references/template-system.md" target="_blank" rel="noopener" data-i18n="about.hero.actions.templateSystem">Template System</a>
+            <a class="button button-tertiary" href="https://github.com/nano-banana-hub/nanobanana/blob/main/references/template-format-spec.md" target="_blank" rel="noopener" data-i18n="about.hero.actions.templateFormat">Template Format</a>
           </div>
 
-          <p class="hero-note">
+          <p class="hero-note" data-i18n="about.hero.note">
             Humans should usually start in the gallery. Agents should prefer `llms.txt`, `catalog.json`, and `agent-catalog.md`.
           </p>
         </aside>
@@ -73,9 +84,9 @@
 
       <section class="manifesto" aria-labelledby="manifesto-title">
         <div class="section-heading">
-          <p class="section-kicker">What BananaHub Is</p>
-          <h2 id="manifesto-title">Not a prompt dump. A distribution layer for reusable templates.</h2>
-          <p>
+          <p class="section-kicker" data-i18n="about.manifesto.kicker">What BananaHub Is</p>
+          <h2 id="manifesto-title" data-i18n="about.manifesto.title">Not a prompt dump. A distribution layer for reusable templates.</h2>
+          <p data-i18n="about.manifesto.lead">
             BananaHub exists so Nano Banana can stay focused on the live workflow while reusable prompt and workflow structures remain
             searchable, installable, and portable across repositories.
           </p>
@@ -84,8 +95,8 @@
         <div class="principle-grid">
           <article class="principle-card">
             <p class="principle-index">01</p>
-            <h3>Agent-native first</h3>
-            <p>
+            <h3 data-i18n="about.principles.first.title">Agent-native first</h3>
+            <p data-i18n="about.principles.first.body">
               The skill owns the conversation, constraint extraction, clarification, and iteration. BananaHub should plug into
               that workflow, not replace it with a separate prompt-builder maze.
             </p>
@@ -93,8 +104,8 @@
 
           <article class="principle-card">
             <p class="principle-index">02</p>
-            <h3>Progressive disclosure over overload</h3>
-            <p>
+            <h3 data-i18n="about.principles.second.title">Progressive disclosure over overload</h3>
+            <p data-i18n="about.principles.second.body">
               Users should see only enough structure to make the next good decision: gallery first, template details on demand,
               full source only when it is needed.
             </p>
@@ -102,8 +113,8 @@
 
           <article class="principle-card">
             <p class="principle-index">03</p>
-            <h3>Searchable, installable, machine-readable</h3>
-            <p>
+            <h3 data-i18n="about.principles.third.title">Searchable, installable, machine-readable</h3>
+            <p data-i18n="about.principles.third.body">
               Templates should be discoverable by humans, installable by CLI, and readable by agents from stable files without
               scraping the website UI.
             </p>
@@ -113,9 +124,9 @@
 
       <section class="agent-strip" aria-labelledby="machine-files-title">
         <div class="agent-strip-copy">
-          <p class="section-kicker">Machine Files</p>
-          <h2 id="machine-files-title">Use these files directly for automation.</h2>
-          <p>
+          <p class="section-kicker" data-i18n="about.machineFiles.kicker">Machine Files</p>
+          <h2 id="machine-files-title" data-i18n="about.machineFiles.title">Use these files directly for automation.</h2>
+          <p data-i18n="about.machineFiles.lead">
             They mirror the public catalog and are the preferred interface for agents, scripts, and workflow tooling.
           </p>
         </div>
@@ -127,34 +138,34 @@
         </div>
 
         <p class="agent-install-line">
-          <span>Install pattern</span>
+          <span data-i18n="about.machineFiles.installPattern">Install pattern</span>
           <code>bananahub add nano-banana-hub/nanobanana/cute-sticker</code>
         </p>
       </section>
 
       <section class="contribute-strip" aria-labelledby="contribute-title">
         <div class="section-heading">
-          <p class="section-kicker">Contribution Loop</p>
-          <h2 id="contribute-title">A decentralized template network, not a monolithic prompt library.</h2>
+          <p class="section-kicker" data-i18n="about.contribute.kicker">Contribution Loop</p>
+          <h2 id="contribute-title" data-i18n="about.contribute.title">A decentralized template network, not a monolithic prompt library.</h2>
         </div>
 
         <div class="contribute-grid">
           <article class="contribute-card">
-            <h3>For template authors</h3>
-            <p>
+            <h3 data-i18n="about.contribute.authors.title">For template authors</h3>
+            <p data-i18n="about.contribute.authors.body">
               Publish self-describing template folders in GitHub, follow the Nano Banana template format, and get indexed through
               the catalog source. Your modules stay portable in your repo; BananaHub stays lightweight.
             </p>
-            <a href="https://github.com/nano-banana-hub/nanobanana/blob/main/references/template-format-spec.md" target="_blank" rel="noopener">Read the template spec</a>
+            <a href="https://github.com/nano-banana-hub/nanobanana/blob/main/references/template-format-spec.md" target="_blank" rel="noopener" data-i18n="about.contribute.authors.link">Read the template spec</a>
           </article>
 
           <article class="contribute-card">
-            <h3>For advanced users and agents</h3>
-            <p>
+            <h3 data-i18n="about.contribute.agents.title">For advanced users and agents</h3>
+            <p data-i18n="about.contribute.agents.body">
               Use the catalog to detect a likely match, inspect the source template when needed, and install only the exact module
               that improves the current task.
             </p>
-            <a href="https://www.npmjs.com/package/bananahub" target="_blank" rel="noopener">Open the bananahub CLI</a>
+            <a href="https://www.npmjs.com/package/bananahub" target="_blank" rel="noopener" data-i18n="about.contribute.agents.link">Open the bananahub CLI</a>
           </article>
         </div>
       </section>
@@ -164,23 +175,25 @@
       <div class="footer-top">
         <div>
           <p class="footer-title">BananaHub</p>
-          <p class="footer-copy">
+          <p class="footer-copy" data-i18n="about.footer.copy">
             Installable template gallery for Nano Banana's agent-native image workflow, with stable files for machine-readable
             access when needed.
           </p>
         </div>
 
         <div class="footer-links">
-          <a href="/">Home</a>
+          <a href="/" data-i18n="common.nav.home">Home</a>
           <a href="llms.txt">llms.txt</a>
           <a href="agent-catalog.md">agent-catalog.md</a>
           <a href="catalog.json">catalog.json</a>
-          <a href="https://github.com/nano-banana-hub/nanobanana/blob/main/references/template-system.md" target="_blank" rel="noopener">Template System</a>
+          <a href="https://github.com/nano-banana-hub/nanobanana/blob/main/references/template-system.md" target="_blank" rel="noopener" data-i18n="about.footer.templateSystem">Template System</a>
         </div>
       </div>
 
-      <p class="footer-meta">BananaHub keeps the base skill lean and distributes reusable templates across the Nano Banana ecosystem.</p>
+      <p class="footer-meta" data-i18n="about.footer.meta">BananaHub keeps the base skill lean and distributes reusable templates across the Nano Banana ecosystem.</p>
     </footer>
   </div>
+
+  <script type="module" src="js/about.js"></script>
 </body>
 </html>

@@ -1,5 +1,14 @@
 import { loadCatalog, getTemplates, filterTemplates, sortTemplates, searchTemplates } from './catalog.js';
 import { fetchAllStats, getTemplateKey } from './api.js';
+import {
+  getCurrentLanguage,
+  getCurrentLocale,
+  initI18n,
+  subscribeLanguageChange,
+  syncLanguageFromLocation,
+  t,
+  translateEnum
+} from './i18n.js';
 
 const GITHUB_RAW = 'https://raw.githubusercontent.com';
 const GITHUB_WEB = 'https://github.com';
@@ -25,6 +34,8 @@ let currentSearch = '';
 let searchTimer = null;
 let activeTemplate = null;
 let lastFocusTarget = null;
+let didCatalogLoadFail = false;
+let isHandlingLocationSync = false;
 const previewRecoveryCache = new Map();
 
 const dom = {
@@ -71,15 +82,19 @@ const dom = {
 let imageObserver = null;
 
 async function init() {
+  initI18n({ page: 'index' });
   bindEvents();
+  subscribeLanguageChange(handleLanguageChange);
   readUrlState();
   syncUIFromState();
 
   try {
     catalog = await loadCatalog();
     allTemplates = getTemplates();
+    didCatalogLoadFail = false;
   } catch (error) {
     console.error('Failed to load catalog:', error);
+    didCatalogLoadFail = true;
     renderLoadError();
     return;
   }
@@ -88,6 +103,26 @@ async function init() {
   updateStructuredData();
   render();
   loadStats();
+}
+
+function handleLanguageChange() {
+  if (isHandlingLocationSync) {
+    return;
+  }
+
+  if (catalog) {
+    hydrateCatalogMeta();
+    render();
+
+    if (dom.lightboxOverlay.classList.contains('open') && activeTemplate) {
+      openLightbox(activeTemplate);
+    }
+    return;
+  }
+
+  if (didCatalogLoadFail) {
+    renderLoadError();
+  }
 }
 
 function bindEvents() {
@@ -228,26 +263,43 @@ function bindEvents() {
 }
 
 function handleUrlNavigation() {
+  isHandlingLocationSync = true;
+  syncLanguageFromLocation('index');
+  isHandlingLocationSync = false;
   readUrlState();
   syncUIFromState();
-  render();
+
+  if (catalog) {
+    hydrateCatalogMeta();
+    render();
+    return;
+  }
+
+  if (didCatalogLoadFail) {
+    renderLoadError();
+  }
 }
 
 function renderLoadError() {
-  dom.templateCount.textContent = '0';
-  dom.profileCount.textContent = '0';
-  dom.catalogGenerated.textContent = 'Unavailable';
-  dom.resultCount.textContent = '0';
-  dom.curatedCount.textContent = '0';
-  dom.discoveredCount.textContent = '0';
-  dom.resultsSummary.textContent = 'The catalog could not be loaded.';
-  dom.catalogHint.textContent = 'Refresh the page or open catalog.json directly to inspect the generated catalog.';
+  const zero = formatCount(0);
+  const unavailable = t('common.value.unavailable');
+
+  dom.templateCount.textContent = zero;
+  dom.profileCount.textContent = zero;
+  dom.catalogGenerated.textContent = unavailable;
+  dom.catalogGenerated.title = unavailable;
+  dom.resultCount.textContent = zero;
+  dom.curatedCount.textContent = zero;
+  dom.discoveredCount.textContent = zero;
+  dom.resultsSummary.textContent = t('common.results.loadFailedSummary');
+  dom.catalogHint.textContent = t('common.results.loadFailedHint');
   dom.grid.innerHTML = [
     '<div class="card-empty">',
-    '<p>Failed to load templates.</p>',
-    '<p>Please refresh the page or open catalog.json directly.</p>',
+    `<p>${escHtml(t('common.empty.loadFailedTitle'))}</p>`,
+    `<p>${escHtml(t('common.empty.loadFailedBody'))}</p>`,
     '</div>'
   ].join('');
+  dom.clearFilters.hidden = true;
 }
 
 function resetState() {
@@ -302,6 +354,11 @@ function getStateParamsFromUrl() {
 
 function writeUrlState() {
   const params = new URLSearchParams();
+  const language = getCurrentLanguage();
+
+  if (language !== 'en') {
+    params.set('lang', language);
+  }
 
   if (currentFilters.source !== DEFAULT_FILTERS.source) {
     params.set('source', currentFilters.source);
@@ -370,7 +427,7 @@ function hydrateCatalogMeta() {
   dom.templateCount.textContent = formatCount(totalTemplates);
   dom.profileCount.textContent = formatCount(totalProfiles);
   dom.catalogGenerated.textContent = formatDate(generatedAt);
-  dom.catalogGenerated.title = generatedAt || 'Unknown';
+  dom.catalogGenerated.title = generatedAt || t('common.value.unknown');
 }
 
 function render() {
@@ -386,8 +443,8 @@ function render() {
   if (templates.length === 0) {
     dom.grid.innerHTML = [
       '<div class="card-empty">',
-      '<p>No templates match the current view.</p>',
-      '<p>Try removing a filter, switching sort mode, or resetting the search.</p>',
+      `<p>${escHtml(t('common.empty.noMatchTitle'))}</p>`,
+      `<p>${escHtml(t('common.empty.noMatchBody'))}</p>`,
       '</div>'
     ].join('');
     return;
@@ -411,19 +468,31 @@ function updateResultsPanel() {
   const activeDetails = [];
 
   if (currentSearch) {
-    activeDetails.push(`query "${currentSearch}"`);
+    activeDetails.push(t('common.results.query', { value: currentSearch }));
   }
 
   if (currentFilters.source !== DEFAULT_FILTERS.source) {
-    activeDetails.push(`source ${currentFilters.source}`);
+    activeDetails.push(
+      t('common.results.source', {
+        value: translateEnum('source', currentFilters.source, currentFilters.source)
+      })
+    );
   }
 
   if (currentFilters.profile !== DEFAULT_FILTERS.profile) {
-    activeDetails.push(`profile ${currentFilters.profile}`);
+    activeDetails.push(
+      t('common.results.profile', {
+        value: translateEnum('profile', currentFilters.profile, currentFilters.profile)
+      })
+    );
   }
 
   if (currentFilters.difficulty !== DEFAULT_FILTERS.difficulty) {
-    activeDetails.push(`difficulty ${currentFilters.difficulty}`);
+    activeDetails.push(
+      t('common.results.difficulty', {
+        value: translateEnum('difficulty', currentFilters.difficulty, currentFilters.difficulty)
+      })
+    );
   }
 
   dom.resultCount.textContent = formatCount(visibleTemplates.length);
@@ -431,27 +500,37 @@ function updateResultsPanel() {
   dom.discoveredCount.textContent = formatCount(visibleDiscoveredCount);
 
   if (visibleTemplates.length > 0) {
-    const summaryBits = [`${formatCount(visibleTemplates.length)} template${visibleTemplates.length === 1 ? '' : 's'}`];
+    const summaryBits = [getTemplateCountLabel(visibleTemplates.length)];
 
     if (visibleProfileCount > 0) {
-      summaryBits.push(`${formatCount(visibleProfileCount)} profile${visibleProfileCount === 1 ? '' : 's'}`);
+      summaryBits.push(getProfileCountLabel(visibleProfileCount));
     }
 
-    summaryBits.push(currentSort === 'trending' ? 'sorted by 24h trend' : 'sorted by installs');
+    summaryBits.push(
+      currentSort === 'trending'
+        ? t('common.results.sortedByTrending')
+        : t('common.results.sortedByInstalls')
+    );
 
     if (activeDetails.length > 0) {
-      summaryBits.push(`filtered by ${activeDetails.join(', ')}`);
+      summaryBits.push(
+        t('common.results.filteredBy', {
+          details: joinLocalizedList(activeDetails)
+        })
+      );
     }
 
     dom.resultsSummary.textContent = summaryBits.join(' · ');
   } else {
-    dom.resultsSummary.textContent = 'No templates match the current search and filter combination.';
+    dom.resultsSummary.textContent = t('common.results.noMatch');
   }
 
   if (hasActiveState()) {
-    dom.catalogHint.textContent = 'The current gallery view is encoded in the URL, so you can share this exact filter state.';
+    dom.catalogHint.textContent = t('common.results.shareableHint');
   } else {
-    dom.catalogHint.textContent = `Click a card for the full brief, or use the install button directly. Catalog refreshed ${formatDate(catalog?.generated)} UTC.`;
+    dom.catalogHint.textContent = t('common.results.defaultHint', {
+      date: formatDate(catalog?.generated)
+    });
   }
 
   dom.clearFilters.hidden = !hasActiveState();
@@ -470,15 +549,23 @@ function hasActiveState() {
 function renderCard(template) {
   const stats = getTemplateStats(template);
   const key = getTemplateKey(template);
-  const title = template.title_en || template.title || template.id;
-  const subtitle = template.title && template.title !== title ? template.title : '';
+  const title = getLocalizedTemplateTitle(template);
+  const subtitle = getLocalizedTemplateSubtitle(template, template.repo);
   const tagsHtml = (template.tags || [])
     .slice(0, 4)
     .map((tag) => `<span class="tag">${escHtml(tag)}</span>`)
     .join('');
   const hasSampleImage = Boolean(template.sample_image);
-  const previewLabel = hasSampleImage ? 'Loading preview' : 'Preview unavailable';
+  const previewLabel = hasSampleImage ? t('common.preview.loading') : t('common.preview.unavailable');
   const sourceUrl = template.template_url || template.repo_url || '#';
+  const sourceValue = template.catalog_source || 'curated';
+  const typeValue = template.type || 'prompt';
+  const profileValue = template.profile || 'general';
+  const difficultyValue = template.difficulty || 'beginner';
+  const aspectValue = template.aspect || t('common.value.na');
+  const installDisplay = getInstallDisplay(stats);
+  const trendingDisplay = getTrendingDisplay(stats);
+  const featuredLabel = template.featured_label?.trim() || t('common.badge.featured');
 
   return `
     <article
@@ -487,7 +574,7 @@ function renderCard(template) {
       data-repo="${escAttr(template.repo)}"
       tabindex="0"
       role="button"
-      aria-label="Open details for ${escAttr(title)}"
+      aria-label="${escAttr(t('common.aria.openDetails', { title }))}"
     >
       <div class="card-image-wrap${hasSampleImage ? '' : ' is-error'}${prefersContainedPreview(template.aspect) ? ' prefers-contain' : ''}">
         <div class="card-image-placeholder" aria-hidden="true">
@@ -496,17 +583,17 @@ function renderCard(template) {
         ${hasSampleImage ? `<img data-src="${escAttr(template.sample_image)}" alt="${escAttr(title)}" loading="lazy">` : ''}
         <div class="card-top-badges">
           <div class="card-top-badges-left">
-            ${template.pinned ? '<span class="card-flag-badge">Pinned</span>' : ''}
-            ${template.featured ? `<span class="card-flag-badge">${escHtml(template.featured_label || 'Featured')}</span>` : ''}
-            ${template.official ? '<span class="card-official-badge">Official</span>' : '<span class="card-official-badge">Community</span>'}
-            <span class="card-source-badge">${escHtml(template.catalog_source || 'curated')}</span>
+            ${template.pinned ? `<span class="card-flag-badge">${escHtml(t('common.badge.pinned'))}</span>` : ''}
+            ${template.featured ? `<span class="card-flag-badge">${escHtml(featuredLabel)}</span>` : ''}
+            <span class="card-official-badge">${escHtml(template.official ? t('common.badge.official') : t('common.badge.community'))}</span>
+            <span class="card-source-badge">${escHtml(translateEnum('source', sourceValue, sourceValue))}</span>
           </div>
           <div class="card-top-badges-right">
-            <span class="card-type-badge">${escHtml(template.type || 'prompt')}</span>
-            <span class="card-profile-badge">${escHtml(template.profile || 'general')}</span>
+            <span class="card-type-badge">${escHtml(translateEnum('type', typeValue, typeValue))}</span>
+            <span class="card-profile-badge">${escHtml(translateEnum('profile', profileValue, profileValue))}</span>
           </div>
         </div>
-        <span class="card-aspect-badge">${escHtml(template.aspect || 'n/a')}</span>
+        <span class="card-aspect-badge">${escHtml(aspectValue)}</span>
       </div>
 
       <div class="card-body">
@@ -519,23 +606,23 @@ function renderCard(template) {
         </div>
 
         <div class="card-tags">
-          ${tagsHtml || '<span class="tag">No tags</span>'}
+          ${tagsHtml || `<span class="tag">${escHtml(t('common.template.noTags'))}</span>`}
         </div>
 
         <div class="card-meta-inline">
-          <span>${escHtml(template.type || 'prompt')}</span>
-          <span>${escHtml(template.difficulty || 'beginner')}</span>
-          <span>${escHtml(template.aspect || 'n/a')}</span>
-          <span data-stat-key="${escAttr(key)}" data-stat-type="trending">${escHtml(getTrendingDisplay(stats))} installs / 24h</span>
+          <span>${escHtml(translateEnum('type', typeValue, typeValue))}</span>
+          <span>${escHtml(translateEnum('difficulty', difficultyValue, difficultyValue))}</span>
+          <span>${escHtml(aspectValue)}</span>
+          <span data-stat-key="${escAttr(key)}" data-stat-type="trending">${escHtml(t('common.card.installs24h', { count: trendingDisplay }))}</span>
         </div>
 
         <div class="card-actions">
-          <span class="card-action-stat" aria-label="${escAttr(`${getInstallDisplay(stats)} installs`)}">
-            <span class="card-action-stat-value" data-stat-key="${escAttr(key)}" data-stat-type="installs">${escHtml(getInstallDisplay(stats))}</span>
-            <small>installs</small>
+          <span class="card-action-stat" aria-label="${escAttr(t('common.card.installCountAria', { count: installDisplay }))}">
+            <span class="card-action-stat-value" data-stat-key="${escAttr(key)}" data-stat-type="installs">${escHtml(installDisplay)}</span>
+            <small>${escHtml(t('common.card.installs'))}</small>
           </span>
-          <button class="copy-btn" data-cmd="${escAttr(template.install_cmd)}" type="button">Copy install</button>
-          <a class="card-source-link" href="${escAttr(sourceUrl)}" target="_blank" rel="noopener">Source</a>
+          <button class="copy-btn" data-cmd="${escAttr(template.install_cmd)}" type="button">${escHtml(t('common.action.copyInstall'))}</button>
+          <a class="card-source-link" href="${escAttr(sourceUrl)}" target="_blank" rel="noopener">${escHtml(t('common.action.source'))}</a>
         </div>
       </div>
     </article>
@@ -647,36 +734,41 @@ function openModal(template, triggerElement) {
 
 function populateModal(template) {
   const stats = getTemplateStats(template);
-  const title = template.title_en || template.title || template.id;
-  const subtitle = template.title && template.title !== title ? template.title : template.id;
+  const title = getLocalizedTemplateTitle(template);
+  const subtitle = getLocalizedTemplateSubtitle(template, template.id);
   const templateUrl = getTemplateUrl(template);
   const originalImageUrl = getOriginalImageLink(template);
   const hasSampleImage = Boolean(template.sample_image);
+  const featuredLabel = template.featured_label?.trim() || t('common.badge.featured');
+  const typeValue = template.type || 'prompt';
+  const profileValue = template.profile || 'general';
+  const difficultyValue = template.difficulty || 'beginner';
+  const sourceValue = template.catalog_source || 'curated';
 
   dom.modalTitle.textContent = title;
   dom.modalSubtitle.textContent = subtitle;
-  dom.modalDesc.textContent = template.description || 'No description provided yet.';
-  dom.modalAuthor.textContent = template.author || 'unknown';
-  dom.modalVersion.textContent = template.version || '0.0.0';
-  dom.modalAspect.textContent = template.aspect || 'n/a';
-  dom.modalUpdated.textContent = template.updated || template.created || 'unknown';
+  dom.modalDesc.textContent = getLocalizedTemplateDescription(template);
+  dom.modalAuthor.textContent = template.author || t('common.value.unknown');
+  dom.modalVersion.textContent = template.version || t('common.value.unknown');
+  dom.modalAspect.textContent = template.aspect || t('common.value.na');
+  dom.modalUpdated.textContent = formatDate(template.updated || template.created);
   dom.modalInstalls.textContent = getInstallDisplay(stats);
   dom.modalTrending.textContent = getTrendingDisplay(stats);
   dom.modalInstallCmd.textContent = template.install_cmd || '';
 
   dom.modalBadges.innerHTML = [
-    ...(template.pinned ? [renderBadge('badge badge-flag', 'pinned')] : []),
-    ...(template.featured ? [renderBadge('badge badge-flag', template.featured_label || 'featured')] : []),
-    renderBadge(`badge badge-type ${escAttr(template.type || 'prompt')}`, template.type || 'prompt'),
-    renderBadge(`badge badge-profile ${escAttr(template.profile || 'general')}`, template.profile || 'general'),
-    renderBadge('badge badge-difficulty', template.difficulty || 'beginner'),
-    renderBadge('badge', template.official ? 'official' : 'community'),
-    renderBadge('badge badge-source', template.catalog_source || 'curated')
+    ...(template.pinned ? [renderBadge('badge badge-flag', t('common.badge.pinned'))] : []),
+    ...(template.featured ? [renderBadge('badge badge-flag', featuredLabel)] : []),
+    renderBadge(`badge badge-type ${escAttr(typeValue)}`, translateEnum('type', typeValue, typeValue)),
+    renderBadge(`badge badge-profile ${escAttr(profileValue)}`, translateEnum('profile', profileValue, profileValue)),
+    renderBadge('badge badge-difficulty', translateEnum('difficulty', difficultyValue, difficultyValue)),
+    renderBadge('badge', template.official ? t('common.badge.official') : t('common.badge.community')),
+    renderBadge('badge badge-source', translateEnum('source', sourceValue, sourceValue))
   ].join('');
 
   dom.modalTags.innerHTML = (template.tags || []).length > 0
     ? template.tags.map((tag) => `<span class="tag">${escHtml(tag)}</span>`).join('')
-    : '<span class="tag">No tags</span>';
+    : `<span class="tag">${escHtml(t('common.template.noTags'))}</span>`;
 
   if (hasSampleImage) {
     dom.modalImage.onerror = async () => {
@@ -692,9 +784,10 @@ function populateModal(template) {
     };
     dom.modalImage.src = template.sample_image;
     dom.modalImage.alt = title;
+    dom.modalImageButton.setAttribute('aria-label', t('index.modal.viewFullImage'));
     dom.modalImageButton.classList.remove('is-disabled');
     dom.modalImageButton.disabled = false;
-    dom.modalImageHint.textContent = 'Open preview';
+    dom.modalImageHint.textContent = t('common.preview.open');
   } else {
     markModalPreviewUnavailable(title);
   }
@@ -725,7 +818,7 @@ function openLightbox(template) {
   }
 
   dom.lightboxImage.src = template.sample_image;
-  dom.lightboxImage.alt = template.title_en || template.title || template.id;
+  dom.lightboxImage.alt = getLocalizedTemplateTitle(template);
   setLinkState(dom.lightboxOpenOriginalLink, getOriginalImageLink(template));
   dom.lightboxOverlay.classList.add('open');
   dom.lightboxOverlay.setAttribute('aria-hidden', 'false');
@@ -785,17 +878,18 @@ function markPreviewUnavailable(wrap) {
 
   const label = wrap.querySelector('.card-image-placeholder-label');
   if (label) {
-    label.textContent = 'Preview unavailable';
+    label.textContent = t('common.preview.unavailable');
   }
 }
 
 function markModalPreviewUnavailable(title) {
   dom.modalImage.onerror = null;
   dom.modalImage.removeAttribute('src');
-  dom.modalImage.alt = `${title} preview unavailable`;
+  dom.modalImage.alt = t('common.aria.previewUnavailable', { title });
+  dom.modalImageButton.setAttribute('aria-label', t('common.aria.previewUnavailable', { title }));
   dom.modalImageButton.classList.add('is-disabled');
   dom.modalImageButton.disabled = true;
-  dom.modalImageHint.textContent = 'Preview unavailable';
+  dom.modalImageHint.textContent = t('common.preview.unavailable');
   dom.modalViewImageBtn.hidden = true;
   dom.modalOpenOriginalLink.hidden = true;
 }
@@ -982,12 +1076,14 @@ function updateStructuredData() {
     '@type': 'CollectionPage',
     name: 'BananaHub',
     url: catalog.site?.url || 'https://nano-banana-hub.github.io/',
-    description: 'Installable prompt and workflow template hub for Nano Banana Skill.',
+    description: t('index.structuredData.pageDescription'),
     mainEntity: {
       '@type': 'DataCatalog',
-      name: 'BananaHub Catalog',
+      name: t('index.structuredData.catalogName'),
       url: catalog.site?.catalog_json || 'https://nano-banana-hub.github.io/catalog.json',
-      description: `Catalog of ${allTemplates.length} installable prompt and workflow templates for Nano Banana Skill.`,
+      description: t('index.structuredData.catalogDescription', {
+        count: formatCount(allTemplates.length)
+      }),
       inLanguage: ['en', 'zh-CN'],
       keywords: [
         'Nano Banana Skill',
@@ -1017,11 +1113,11 @@ async function copyToClipboard(text, button) {
     document.body.removeChild(fallback);
   }
 
-  button.textContent = 'Copied';
+  button.textContent = t('common.action.copied');
   button.classList.add('copied');
 
   window.setTimeout(() => {
-    button.textContent = originalLabel;
+    button.textContent = getCopyButtonLabel(button, originalLabel);
     button.classList.remove('copied');
   }, 1400);
 }
@@ -1031,25 +1127,78 @@ function formatCount(value) {
     return String(value || '0');
   }
 
-  return new Intl.NumberFormat('en-US').format(value);
+  return new Intl.NumberFormat(getCurrentLocale()).format(value);
 }
 
 function formatDate(value) {
   if (!value) {
-    return 'Unknown';
+    return t('common.value.unknown');
   }
 
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) {
-    return 'Unknown';
+    return t('common.value.unknown');
   }
 
-  return new Intl.DateTimeFormat('en-US', {
+  return new Intl.DateTimeFormat(getCurrentLocale(), {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
     timeZone: 'UTC'
   }).format(date);
+}
+
+function getLocalizedTemplateTitle(template) {
+  if (getCurrentLanguage() === 'zh-CN') {
+    return template.title || template.title_en || template.id;
+  }
+
+  return template.title_en || template.title || template.id;
+}
+
+function getLocalizedTemplateSubtitle(template, fallback = '') {
+  const title = getLocalizedTemplateTitle(template);
+  const alternateTitle = getCurrentLanguage() === 'zh-CN' ? template.title_en : template.title;
+
+  if (alternateTitle && alternateTitle !== title) {
+    return alternateTitle;
+  }
+
+  return fallback;
+}
+
+function getLocalizedTemplateDescription(template) {
+  return template.description || t('common.template.noDescription');
+}
+
+function getTemplateCountLabel(count) {
+  return t(
+    count === 1 ? 'common.results.singleTemplateCount' : 'common.results.templateCount',
+    { count: formatCount(count) }
+  );
+}
+
+function getProfileCountLabel(count) {
+  return t(
+    count === 1 ? 'common.results.singleProfileCount' : 'common.results.profileCount',
+    { count: formatCount(count) }
+  );
+}
+
+function joinLocalizedList(items) {
+  return items.join(getCurrentLanguage() === 'zh-CN' ? '，' : ', ');
+}
+
+function getCopyButtonLabel(button, fallback) {
+  if (!button?.isConnected) {
+    return fallback;
+  }
+
+  if (button.id === 'modal-copy-btn') {
+    return t('common.action.copy');
+  }
+
+  return t('common.action.copyInstall');
 }
 
 function escHtml(value) {
