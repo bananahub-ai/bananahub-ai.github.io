@@ -34,4 +34,4 @@ Ecosystem links:
 - Template format spec: https://github.com/nano-banana-hub/nanobanana/blob/main/references/template-format-spec.md
 
 Current catalog summary: 7 templates total, 6 curated, 1 discovered, 0 pinned, 0 featured.
-Generated: 2026-03-31T04:13:00.748Z
+Generated: 2026-03-31T07:09:24.293Z
