@@ -552,7 +552,7 @@ function renderCard(template) {
   const title = getLocalizedTemplateTitle(template);
   const subtitle = getLocalizedTemplateSubtitle(template, template.repo);
   const tagsHtml = (template.tags || [])
-    .slice(0, 4)
+    .slice(0, 3)
     .map((tag) => `<span class="tag">${escHtml(tag)}</span>`)
     .join('');
   const hasSampleImage = Boolean(template.sample_image);
@@ -586,7 +586,6 @@ function renderCard(template) {
             ${template.pinned ? `<span class="card-flag-badge">${escHtml(t('common.badge.pinned'))}</span>` : ''}
             ${template.featured ? `<span class="card-flag-badge">${escHtml(featuredLabel)}</span>` : ''}
             <span class="card-official-badge">${escHtml(template.official ? t('common.badge.official') : t('common.badge.community'))}</span>
-            <span class="card-source-badge">${escHtml(translateEnum('source', sourceValue, sourceValue))}</span>
           </div>
           <div class="card-top-badges-right">
             <span class="card-type-badge">${escHtml(translateEnum('type', typeValue, typeValue))}</span>
@@ -610,7 +609,7 @@ function renderCard(template) {
         </div>
 
         <div class="card-meta-inline">
-          <span>${escHtml(translateEnum('type', typeValue, typeValue))}</span>
+          <span>${escHtml(translateEnum('source', sourceValue, sourceValue))}</span>
           <span>${escHtml(translateEnum('difficulty', difficultyValue, difficultyValue))}</span>
           <span>${escHtml(aspectValue)}</span>
           <span data-stat-key="${escAttr(key)}" data-stat-type="trending">${escHtml(t('common.card.installs24h', { count: trendingDisplay }))}</span>

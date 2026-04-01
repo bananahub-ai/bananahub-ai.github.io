@@ -4,7 +4,7 @@
   --paper-warm: #f8f4ea;
   --ink: #1c211c;
   --ink-soft: #4f584f;
-  --ink-faint: #7a8175;
+  --ink-faint: #646b60;
   --line: rgba(28, 33, 28, 0.14);
   --line-strong: rgba(28, 33, 28, 0.26);
   --accent: #d9862a;
@@ -359,13 +359,18 @@ main {
 
 .hero-rail {
   display: grid;
-  gap: 14px;
+  gap: 16px;
   align-content: space-between;
-  padding: 16px;
-  border: 1px solid rgba(28, 33, 28, 0.12);
+  padding: 18px;
+  border: 1px solid rgba(28, 33, 28, 0.1);
   border-radius: 24px;
-  background: linear-gradient(180deg, rgba(28, 33, 28, 0.94), rgba(42, 47, 40, 0.94));
-  color: #f7efdc;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 245, 0.78), rgba(244, 235, 213, 0.9)),
+    radial-gradient(circle at top right, rgba(217, 134, 42, 0.12), transparent 44%);
+  color: var(--ink);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.46),
+    0 10px 22px rgba(56, 42, 18, 0.06);
 }
 
 .hero-metrics {
@@ -379,9 +384,9 @@ main {
 
 .hero-metrics li {
   padding: 12px 12px 10px;
-  border: 1px solid rgba(247, 239, 220, 0.12);
+  border: 1px solid rgba(28, 33, 28, 0.1);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .hero-metrics span {
@@ -389,13 +394,33 @@ main {
   font-family: 'Fraunces', serif;
   font-size: 1.55rem;
   line-height: 1;
+  color: var(--ink);
 }
 
 .hero-metrics small {
   display: block;
   margin-top: 7px;
-  color: rgba(247, 239, 220, 0.72);
-  font-size: 0.76rem;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+
+.hero-rail .button {
+  border-color: rgba(28, 33, 28, 0.14);
+}
+
+.hero-rail .button-primary {
+  background: var(--ink);
+  color: #f7efdc;
+}
+
+.hero-rail .button-secondary {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.hero-rail .button-tertiary {
+  color: var(--ink-soft);
+  background: transparent;
 }
 
 .hero-actions {
@@ -472,8 +497,8 @@ main {
 
 .hero-note {
   margin: 0;
-  color: rgba(247, 239, 220, 0.74);
-  font-size: 0.85rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
 }
 
 .catalog-shell {
@@ -643,9 +668,9 @@ main {
 
 .template-card {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   min-height: 100%;
-  padding: 10px;
+  padding: 12px;
   border: 1px solid rgba(28, 33, 28, 0.12);
   border-radius: 22px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(247, 240, 226, 0.94));
@@ -705,7 +730,7 @@ main {
 .card-image-placeholder-label {
   color: var(--ink-faint);
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   text-align: center;
@@ -744,17 +769,19 @@ main {
 .card-aspect-badge {
   display: inline-flex;
   align-items: center;
-  min-height: 22px;
-  padding: 0 7px;
+  min-height: 20px;
+  padding: 0 8px;
+  border: 1px solid rgba(28, 33, 28, 0.08);
   border-radius: 999px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.62rem;
+  font-size: 0.66rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .card-official-badge {
@@ -763,21 +790,11 @@ main {
 }
 
 .card-profile-badge {
-  min-height: 18px;
-  padding: 0 6px;
-  border-radius: 7px;
-  font-size: 0.58rem;
-  letter-spacing: 0.04em;
   background: rgba(28, 33, 28, 0.72);
   color: #f7efdc;
 }
 
 .card-type-badge {
-  min-height: 18px;
-  padding: 0 6px;
-  border-radius: 7px;
-  font-size: 0.58rem;
-  letter-spacing: 0.04em;
   background: rgba(47, 110, 114, 0.16);
   color: var(--teal);
 }
@@ -803,7 +820,7 @@ main {
 
 .card-body {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   padding: 2px 2px 0;
 }
 
@@ -820,7 +837,7 @@ main {
 
 .card-eyebrow {
   color: var(--ink-faint);
-  font-size: 0.64rem;
+  font-size: 0.68rem;
 }
 
 .card-title {
@@ -830,9 +847,9 @@ main {
 }
 
 .card-subtitle {
-  margin-top: 2px;
+  margin-top: 4px;
   color: var(--ink-soft);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   line-height: 1.35;
 }
 
@@ -874,13 +891,13 @@ main {
   min-height: 24px;
   padding: 0 8px;
   border-radius: 999px;
-  font-size: 0.7rem;
+  font-size: 0.74rem;
 }
 
 .tag {
   border: 1px dashed rgba(28, 33, 28, 0.16);
   color: var(--ink-soft);
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.58);
 }
 
 .badge {
@@ -931,9 +948,9 @@ main {
 .card-meta-inline {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 10px;
+  gap: 8px 12px;
   color: var(--ink-faint);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
 }
 
 .card-meta-inline span {
@@ -955,6 +972,8 @@ main {
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(28, 33, 28, 0.08);
 }
 
 .card-action-stat,
@@ -963,11 +982,11 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 34px;
-  padding: 0 11px;
+  min-height: 36px;
+  padding: 0 12px;
   border-radius: 999px;
   text-decoration: none;
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   text-align: center;
   white-space: nowrap;
   line-height: 1;
@@ -982,8 +1001,8 @@ main {
 }
 
 .card-action-stat small {
-  color: var(--ink-faint);
-  font-size: 0.62rem;
+  color: var(--ink-soft);
+  font-size: 0.68rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -1009,16 +1028,16 @@ main {
 
 .copy-btn-compact {
   flex: 0 0 auto;
-  min-height: 30px;
+  min-height: 32px;
   padding: 0 10px;
-  font-size: 0.72rem;
+  font-size: 0.76rem;
 }
 
 .card-source-link {
   flex: 0 0 auto;
-  border: 1px solid rgba(28, 33, 28, 0.14);
-  background: rgba(255, 255, 255, 0.64);
-  color: var(--ink-soft);
+  border: 1px solid rgba(28, 33, 28, 0.18);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--ink);
 }
 
 .card-empty {
