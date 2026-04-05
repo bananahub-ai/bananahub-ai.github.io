@@ -7,14 +7,14 @@ The catalog has two layers: curated templates for reviewed defaults, and discove
 Curated is the recommendation layer. Discovered is the open discovery layer. Moderation rules can ban or pin templates independently of either layer.
 Built-in templates should be used directly inside BananaHub Skill. Install counts apply only to remote templates.
 
-Canonical site: https://bananahub-ai.github.io/
+Canonical site: https://bananahub.ai/
 
 Preferred machine-readable entry points:
-- https://bananahub-ai.github.io/catalog.json — merged catalog with curated + discovered templates
-- https://bananahub-ai.github.io/catalog-curated.json — curated-only catalog
-- https://bananahub-ai.github.io/catalog-discovered.json — discovered-only catalog
-- https://bananahub-ai.github.io/agent-catalog.md — markdown digest of the current catalog
-- https://bananahub-ai.github.io/llms.txt — this overview
+- https://bananahub.ai/catalog.json — merged catalog with curated + discovered templates
+- https://bananahub.ai/catalog-curated.json — curated-only catalog
+- https://bananahub.ai/catalog-discovered.json — discovered-only catalog
+- https://bananahub.ai/agent-catalog.md — markdown digest of the current catalog
+- https://bananahub.ai/llms.txt — this overview
 
 Command rules:
 - Prefer primary_cmd for the next action.

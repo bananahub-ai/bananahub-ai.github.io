@@ -1410,12 +1410,12 @@ function updateStructuredData() {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'BananaHub',
-    url: catalog.site?.url || 'https://bananahub-ai.github.io/',
+    url: catalog.site?.url || 'https://bananahub.ai/',
     description: t('index.structuredData.pageDescription'),
     mainEntity: {
       '@type': 'DataCatalog',
       name: t('index.structuredData.catalogName'),
-      url: catalog.site?.catalog_json || 'https://bananahub-ai.github.io/catalog.json',
+      url: catalog.site?.catalog_json || 'https://bananahub.ai/catalog.json',
       description: t('index.structuredData.catalogDescription', {
         count: formatCount(allTemplates.length)
       }),

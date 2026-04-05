@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://bananahub-ai.github.io/</loc>
+    <loc>https://bananahub.ai/</loc>
     <lastmod>2026-04-04T11:28:26.004Z</lastmod>
   </url>
   <url>
-    <loc>https://bananahub-ai.github.io/about.html</loc>
+    <loc>https://bananahub.ai/about.html</loc>
     <lastmod>2026-04-04T11:28:26.004Z</lastmod>
   </url>
   <url>
-    <loc>https://bananahub-ai.github.io/catalog.json</loc>
+    <loc>https://bananahub.ai/catalog.json</loc>
     <lastmod>2026-04-04T11:28:26.004Z</lastmod>
   </url>
   <url>
-    <loc>https://bananahub-ai.github.io/catalog-curated.json</loc>
+    <loc>https://bananahub.ai/catalog-curated.json</loc>
     <lastmod>2026-04-04T11:28:26.004Z</lastmod>
   </url>
   <url>
-    <loc>https://bananahub-ai.github.io/catalog-discovered.json</loc>
+    <loc>https://bananahub.ai/catalog-discovered.json</loc>
     <lastmod>2026-04-04T11:28:26.004Z</lastmod>
   </url>
   <url>
-    <loc>https://bananahub-ai.github.io/llms.txt</loc>
+    <loc>https://bananahub.ai/llms.txt</loc>
     <lastmod>2026-04-04T11:28:26.004Z</lastmod>
   </url>
   <url>
-    <loc>https://bananahub-ai.github.io/agent-catalog.md</loc>
+    <loc>https://bananahub.ai/agent-catalog.md</loc>
     <lastmod>2026-04-04T11:28:26.004Z</lastmod>
   </url>
 </urlset>

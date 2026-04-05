@@ -6,8 +6,8 @@ const path = require('path');
 const GITHUB_API = 'https://api.github.com';
 const GITHUB_RAW = 'https://raw.githubusercontent.com';
 const GITHUB_WEB = 'https://github.com';
-const HUB_API_BASE = process.env.BANANAHUB_API_BASE || 'https://bananahub-api.zhan9kun.workers.dev/api';
-const SITE_URL = 'https://bananahub-ai.github.io';
+const HUB_API_BASE = process.env.BANANAHUB_API_BASE || 'https://worker.bananahub.ai/api';
+const SITE_URL = 'https://bananahub.ai';
 const KNOWN_SHORT_INSTALL_ROOTS = new Set(['references/templates', 'templates']);
 const CANONICAL_REPO_ALIASES = new Map([
   ['nano-banana-hub/nanobanana', 'bananahub-ai/bananahub-skill'],

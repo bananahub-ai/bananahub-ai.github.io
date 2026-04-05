@@ -3,13 +3,13 @@
   "catalog_type": "discovered",
   "generated": "2026-04-04T11:28:26.004Z",
   "site": {
-    "url": "https://bananahub-ai.github.io/",
-    "hub_api_base": "https://bananahub-api.zhan9kun.workers.dev/api",
-    "catalog_json": "https://bananahub-ai.github.io/catalog.json",
-    "catalog_curated_json": "https://bananahub-ai.github.io/catalog-curated.json",
-    "catalog_discovered_json": "https://bananahub-ai.github.io/catalog-discovered.json",
-    "llms_txt": "https://bananahub-ai.github.io/llms.txt",
-    "agent_catalog": "https://bananahub-ai.github.io/agent-catalog.md"
+    "url": "https://bananahub.ai/",
+    "hub_api_base": "https://worker.bananahub.ai/api",
+    "catalog_json": "https://bananahub.ai/catalog.json",
+    "catalog_curated_json": "https://bananahub.ai/catalog-curated.json",
+    "catalog_discovered_json": "https://bananahub.ai/catalog-discovered.json",
+    "llms_txt": "https://bananahub.ai/llms.txt",
+    "agent_catalog": "https://bananahub.ai/agent-catalog.md"
   },
   "summary": {
     "template_count": 1,
@@ -95,7 +95,7 @@
       "primary_action": "install",
       "primary_cmd": "bananahub add zkywalker/nanobanana-artisan-portrait",
       "install_required": true,
-      "usage_stats_url": "https://bananahub-api.zhan9kun.workers.dev/api/usage-stats?repo=zkywalker%2Fnanobanana-artisan-portrait&template_id=artisan-portrait",
+      "usage_stats_url": "https://worker.bananahub.ai/api/usage-stats?repo=zkywalker%2Fnanobanana-artisan-portrait&template_id=artisan-portrait",
       "created": "2026-03-30",
       "updated": "2026-03-30",
       "pinned": false,

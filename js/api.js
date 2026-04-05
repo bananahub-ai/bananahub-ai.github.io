@@ -1,6 +1,6 @@
 // js/api.js - BananaHub API client
 
-const API_BASE = 'https://bananahub-api.zhan9kun.workers.dev/api';
+const API_BASE = 'https://worker.bananahub.ai/api';
 const TIMEOUT_MS = 5000;
 const MAX_CONCURRENCY = 10;
 const EMPTY_STATS = {

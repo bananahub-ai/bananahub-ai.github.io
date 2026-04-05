@@ -2,7 +2,7 @@
 
 Public gallery and machine-readable catalog for installable BananaHub templates.
 
-Live at: **https://bananahub-ai.github.io**
+Live at: **https://bananahub.ai**
 
 ## Positioning
 
