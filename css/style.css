@@ -863,6 +863,8 @@ main {
 
 .card-image-wrap {
   position: relative;
+  width: 100%;
+  min-width: 0;
   aspect-ratio: 1 / 1.02;
   overflow: hidden;
   border-radius: 16px;
@@ -1021,6 +1023,7 @@ main {
 .card-body {
   display: grid;
   gap: 12px;
+  min-width: 0;
   padding: 2px 2px 0;
 }
 
@@ -2073,15 +2076,24 @@ main {
   }
 
   .card-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
     align-items: stretch;
   }
 
   .card-actions .card-action-stat {
     width: auto;
+    white-space: normal;
+    align-items: flex-start;
+  }
+
+  .card-actions .card-action-stat small {
+    text-align: left;
+    line-height: 1.2;
   }
 
   .card-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
   }
 
   .modal-overlay,
