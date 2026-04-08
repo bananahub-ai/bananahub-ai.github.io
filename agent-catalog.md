@@ -1,6 +1,6 @@
 # BananaHub Agent Catalog
 
-Generated: 2026-04-08T11:24:45.680Z
+Generated: 2026-04-08T11:55:33.943Z
 
 BananaHub is the installable template network for BananaHub Skill.
 Use `catalog.json` for structured access. This markdown file is a readable digest of the merged catalog.
@@ -224,7 +224,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Template Source: https://github.com/bananahub-ai/bananahub-skill/tree/main/references/templates/repo-explainer-diagram
 - Preview Image: https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/repo-explainer-diagram/samples/sample-3-pro-01.png
 
-## Discovered Templates (1)
+## Discovered Templates (2)
 
 ### artisan-portrait
 - Title: Environmental Artisan Portrait / 匠人环境人像
@@ -245,4 +245,24 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=zkywalker%2Fnanobanana-artisan-portrait&template_id=artisan-portrait
 - Template Source: https://github.com/zkywalker/nanobanana-artisan-portrait/tree/main
 - Preview Image: https://raw.githubusercontent.com/zkywalker/nanobanana-artisan-portrait/main/samples/sample-3-pro-01.png
+
+### city-landmark-diorama
+- Title: City Landmark Diorama Workflow / 城市地标沙盘工作流
+- Type: workflow
+- Profile: 3d
+- Difficulty: intermediate
+- Source Layer: discovered
+- Distribution: remote
+- License: NOASSERTION
+- Official: no
+- Featured: no
+- Pinned: no
+- Tags: 城市沙盘, 城市地标, 建筑模型, isometric, diorama, cityscape, landmark, miniature
+- Description: Guide the agent through turning a city name or a mixed Chinese brief into a reusable English prompt for a premium square city diorama. The workflow can auto-resolve landmarks, geography, vegetation, and cultural micro-details, or accept direct overrides when the user wants exact control.
+- Primary Action: install
+- Primary Command: `bananahub add zkywalker/nanobanana-city-landmark-diorama`
+- Install Command: `bananahub add zkywalker/nanobanana-city-landmark-diorama`
+- Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=zkywalker%2Fnanobanana-city-landmark-diorama&template_id=city-landmark-diorama
+- Template Source: https://github.com/zkywalker/nanobanana-city-landmark-diorama/tree/main
+- Preview Image: https://raw.githubusercontent.com/zkywalker/nanobanana-city-landmark-diorama/main/samples/sample-3-pro-01.png
 

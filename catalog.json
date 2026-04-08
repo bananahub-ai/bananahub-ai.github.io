@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "catalog_type": "merged",
-  "generated": "2026-04-08T11:24:45.680Z",
+  "generated": "2026-04-08T11:55:33.943Z",
   "site": {
     "url": "https://bananahub.ai/",
     "hub_api_base": "https://worker.bananahub.ai/api",
@@ -12,18 +12,19 @@
     "agent_catalog": "https://bananahub.ai/agent-catalog.md"
   },
   "summary": {
-    "template_count": 12,
-    "profile_count": 7,
+    "template_count": 13,
+    "profile_count": 8,
     "official_count": 11,
     "featured_count": 0,
     "pinned_count": 0,
     "bundled_count": 11,
-    "remote_count": 1,
+    "remote_count": 2,
     "curated_count": 11,
-    "discovered_count": 1,
+    "discovered_count": 2,
     "repos": [
       "bananahub-ai/bananahub-skill",
-      "zkywalker/nanobanana-artisan-portrait"
+      "zkywalker/nanobanana-artisan-portrait",
+      "zkywalker/nanobanana-city-landmark-diorama"
     ]
   },
   "layers": {
@@ -37,16 +38,18 @@
       ]
     },
     "discovered": {
-      "template_count": 1,
+      "template_count": 2,
       "official_count": 0,
       "bundled_count": 0,
-      "remote_count": 1,
+      "remote_count": 2,
       "repos": [
-        "zkywalker/nanobanana-artisan-portrait"
+        "zkywalker/nanobanana-artisan-portrait",
+        "zkywalker/nanobanana-city-landmark-diorama"
       ]
     }
   },
   "profiles": [
+    "3d",
     "diagram",
     "general",
     "minimal",
@@ -770,6 +773,72 @@
       "usage_stats_url": "https://worker.bananahub.ai/api/usage-stats?repo=zkywalker%2Fnanobanana-artisan-portrait&template_id=artisan-portrait",
       "created": "2026-03-30",
       "updated": "2026-03-30",
+      "pinned": false,
+      "pinned_rank": null,
+      "featured": false,
+      "featured_label": "",
+      "featured_note": ""
+    },
+    {
+      "id": "city-landmark-diorama",
+      "type": "workflow",
+      "title": "城市地标沙盘工作流",
+      "title_en": "City Landmark Diorama Workflow",
+      "author": "zkywalker",
+      "license": "NOASSERTION",
+      "version": "1.0.0",
+      "profile": "3d",
+      "tags": [
+        "城市沙盘",
+        "城市地标",
+        "建筑模型",
+        "isometric",
+        "diorama",
+        "cityscape",
+        "landmark",
+        "miniature"
+      ],
+      "aspect": "1:1",
+      "difficulty": "intermediate",
+      "description": "Guide the agent through turning a city name or a mixed Chinese brief into a reusable English prompt for a premium square city diorama. The workflow can auto-resolve landmarks, geography, vegetation, and cultural micro-details, or accept direct overrides when the user wants exact control.",
+      "samples": [
+        {
+          "file": "samples/sample-3-pro-01.png",
+          "model": "gemini-3-pro-image-preview",
+          "prompt": "Create a premium architectural diorama of Beijing on a clean square base, shown in a 45-degree top-down isometric view. Use a dense, highly accurate photorealistic scale model cityscape. Automatically identify and seamlessly integrate Beijing's most iconic historical and modern landmarks, keeping them instantly recognizable and compositionally balanced. Include the city's real geographic signature, such as the central axis planning logic and landmark urban layout, plus native northern Chinese vegetation and authentic local micro-details such as bicycles, buses, hutong-adjacent street elements, and tiny everyday crowds. Place a medium-size black Chinese title \\\"北京\\\" centered at the top. Pure white background, refined studio architectural-model lighting, subtle tilt-shift look.",
+          "aspect": "1:1",
+          "image": "https://raw.githubusercontent.com/zkywalker/nanobanana-city-landmark-diorama/main/samples/sample-3-pro-01.png",
+          "page_url": "https://github.com/zkywalker/nanobanana-city-landmark-diorama/blob/main/samples/sample-3-pro-01.png"
+        },
+        {
+          "file": "samples/sample-3-pro-02.png",
+          "model": "gemini-3-pro-image-preview",
+          "prompt": "Create a premium architectural diorama of Beijing on a clean square base, shown in a 45-degree top-down isometric view. Use a dense, highly accurate photorealistic scale model cityscape. Feature these required landmarks prominently: the China World Trade Center complex, the CCTV Headquarters, and the surrounding Guomao CBD skyline. Keep the district instantly recognizable as Beijing's Guomao CBD while preserving Beijing-specific urban context. Include real local geography and city texture cues, native northern Chinese vegetation, multilane ring-road urban logic, and authentic local micro-details such as taxis, buses, crosswalk infrastructure, and tiny office-district crowds. Place a medium-size black Chinese title \\\"北京·国贸CBD\\\" centered at the top. Pure white background, refined studio architectural-model lighting, subtle tilt-shift look.",
+          "aspect": "1:1",
+          "image": "https://raw.githubusercontent.com/zkywalker/nanobanana-city-landmark-diorama/main/samples/sample-3-pro-02.png",
+          "page_url": "https://github.com/zkywalker/nanobanana-city-landmark-diorama/blob/main/samples/sample-3-pro-02.png"
+        }
+      ],
+      "sample_image": "https://raw.githubusercontent.com/zkywalker/nanobanana-city-landmark-diorama/main/samples/sample-3-pro-01.png",
+      "sample_image_page_url": "https://github.com/zkywalker/nanobanana-city-landmark-diorama/blob/main/samples/sample-3-pro-01.png",
+      "repo": "zkywalker/nanobanana-city-landmark-diorama",
+      "repo_url": "https://github.com/zkywalker/nanobanana-city-landmark-diorama",
+      "branch": "main",
+      "distribution": "remote",
+      "template_root": "",
+      "template_path": "",
+      "template_url": "https://github.com/zkywalker/nanobanana-city-landmark-diorama/tree/main",
+      "official": false,
+      "catalog_source": "discovered",
+      "use_cmd": "/bananahub use city-landmark-diorama",
+      "install_target": "zkywalker/nanobanana-city-landmark-diorama",
+      "install_cmd": "bananahub add zkywalker/nanobanana-city-landmark-diorama",
+      "primary_action": "install",
+      "primary_cmd": "bananahub add zkywalker/nanobanana-city-landmark-diorama",
+      "install_required": true,
+      "usage_stats_url": "https://worker.bananahub.ai/api/usage-stats?repo=zkywalker%2Fnanobanana-city-landmark-diorama&template_id=city-landmark-diorama",
+      "created": "2026-04-08",
+      "updated": "2026-04-08",
       "pinned": false,
       "pinned_rank": null,
       "featured": false,
