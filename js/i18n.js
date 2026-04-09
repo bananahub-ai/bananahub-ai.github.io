@@ -134,6 +134,11 @@ const translations = {
         eyebrow: 'Starter + Remote',
         title: 'Browse templates for BananaHub Skill.',
         lead: 'Start with bundled starter templates, then install remote modules only when they add value.',
+        githubBadge: {
+          label: 'Open source',
+          title: 'Star BananaHub Skill',
+          ariaLabel: 'Open the BananaHub Skill repository on GitHub and view its current star count',
+        },
         metrics: {
           indexedTemplates: 'templates',
           profilesCovered: 'profiles',
@@ -408,6 +413,11 @@ const translations = {
         eyebrow: '内置 + 远程',
         title: '挑模板、看效果、直接开用。',
         lead: '先从 Skill 自带的起步模板开始，不够用时再安装远程模板。',
+        githubBadge: {
+          label: '开源仓库',
+          title: '去 GitHub 点个 Star',
+          ariaLabel: '打开 BananaHub Skill 的 GitHub 仓库并查看当前星标数量',
+        },
         metrics: {
           indexedTemplates: '个模板',
           profilesCovered: '个分类',

@@ -309,6 +309,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  flex: 1 1 320px;
   min-width: 0;
 }
 
@@ -329,9 +330,20 @@ main {
 
 .hero-banner-stats {
   display: flex;
+  flex-wrap: wrap;
   gap: 14px;
   align-items: center;
-  flex-shrink: 0;
+  justify-content: flex-end;
+}
+
+.hero-banner-meta {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 1 440px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  max-width: 100%;
 }
 
 .hero-stat {
@@ -357,6 +369,65 @@ main {
   color: var(--ink-faint);
   font-size: 0.75rem;
   white-space: nowrap;
+}
+
+.hero-github-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 10px 12px;
+  border: 1px solid rgba(28, 33, 28, 0.12);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 251, 243, 0.92), rgba(246, 238, 220, 0.96)),
+    radial-gradient(circle at top right, rgba(47, 110, 114, 0.14), transparent 52%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.48),
+    0 10px 22px rgba(56, 42, 18, 0.08);
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.hero-github-badge:hover,
+.hero-github-badge:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(28, 33, 28, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.56),
+    0 14px 28px rgba(56, 42, 18, 0.1);
+}
+
+.hero-github-badge-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.hero-github-badge-label {
+  color: var(--ink-faint);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-github-badge strong {
+  font-family: 'Fraunces', serif;
+  font-size: 0.96rem;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.hero-github-badge img {
+  display: block;
+  height: 20px;
+  min-width: 102px;
 }
 
 .quickstart-strip {
@@ -1982,6 +2053,17 @@ main {
 }
 
 @media (max-width: 980px) {
+  .hero-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-banner-meta,
+  .hero-banner-stats {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
   .access-grid,
   .principle-grid,
   .contribute-grid,
@@ -2046,9 +2128,9 @@ main {
     padding-right: 16px;
   }
 
-  .hero-banner {
-    flex-direction: column;
-    align-items: flex-start;
+  .hero-github-badge {
+    width: 100%;
+    justify-content: space-between;
   }
 
   .quickstart-command code {
