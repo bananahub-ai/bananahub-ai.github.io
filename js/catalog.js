@@ -25,6 +25,9 @@ export function filterTemplates(templates, filters) {
     if (filters.difficulty && filters.difficulty !== 'all' && template.difficulty !== filters.difficulty) {
       return false;
     }
+    if (filters.provider && filters.provider !== 'all' && !(template.providers || []).includes(filters.provider)) {
+      return false;
+    }
     return true;
   });
 }
@@ -49,6 +52,7 @@ export function sortTemplates(templates, sortMode, statsMap) {
   const getDistributionRank = (template) => (template.distribution === 'bundled' ? 0 : 1);
   const getSourceRank = (template) => (template.catalog_source === 'curated' ? 0 : 1);
   const getOfficial = (template) => Number(Boolean(template.official));
+  const getModelPriority = (template) => Number.isFinite(template.model_priority) ? template.model_priority : 99;
   const getTitle = (template) => template.title_en || template.title || template.id;
 
   sorted.sort((a, b) => {
@@ -68,6 +72,10 @@ export function sortTemplates(templates, sortMode, statsMap) {
         return trendingDiff;
       }
     } else {
+      const modelDiff = getModelPriority(a) - getModelPriority(b);
+      if (modelDiff !== 0) {
+        return modelDiff;
+      }
       const distributionDiff = getDistributionRank(a) - getDistributionRank(b);
       if (distributionDiff !== 0) {
         return distributionDiff;
@@ -116,6 +124,8 @@ export function searchTemplates(templates, query) {
       template.distribution,
       template.primary_action,
       template.difficulty,
+      ...(template.providers || []),
+      ...(template.models || []),
       ...(template.tags || [])
     ].join(' ').toLowerCase();
 

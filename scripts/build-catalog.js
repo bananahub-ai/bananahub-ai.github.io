@@ -48,8 +48,26 @@ function parseFrontmatter(content) {
     const rawValue = keyMatch[2].trim();
 
     if (rawValue === '') {
-      const items = [];
       let cursor = index + 1;
+
+      if (cursor < lines.length && /^  \w/.test(lines[cursor])) {
+        const objectValue = {};
+        while (cursor < lines.length && /^  \w/.test(lines[cursor])) {
+          const nested = lines[cursor].match(/^  (\w[\w_]*):\s*(.*)/);
+          if (nested) {
+            const nestedValue = nested[2].trim();
+            objectValue[nested[1]] = nestedValue.startsWith('[') && nestedValue.endsWith(']')
+              ? nestedValue.slice(1, -1).split(',').map((value) => coerce(value.trim())).filter(Boolean)
+              : coerce(nestedValue);
+          }
+          cursor += 1;
+        }
+        result[key] = objectValue;
+        index = cursor;
+        continue;
+      }
+
+      const items = [];
 
       while (cursor < lines.length && /^  - /.test(lines[cursor])) {
         const firstLine = lines[cursor].replace(/^  - /, '').trim();
@@ -67,10 +85,52 @@ function parseFrontmatter(content) {
         }
 
         cursor += 1;
-        while (cursor < lines.length && /^    \w/.test(lines[cursor])) {
+        while (cursor < lines.length && /^    /.test(lines[cursor])) {
+          if (/^      /.test(lines[cursor])) {
+            cursor += 1;
+            continue;
+          }
           const nested = lines[cursor].match(/^    (\w[\w_]*):\s*(.*)/);
           if (nested) {
-            objectValue[nested[1]] = coerce(nested[2].trim());
+            const nestedKey = nested[1];
+            const nestedValue = nested[2].trim();
+            if (nestedValue === '') {
+              const nestedItems = [];
+              cursor += 1;
+              while (cursor < lines.length && /^      - /.test(lines[cursor])) {
+                const nestedItemLine = lines[cursor].replace(/^      - /, '').trim();
+                const nestedObject = {};
+                let nestedHasFields = false;
+                const nestedFirstField = nestedItemLine.match(/^(\w[\w_]*):\s*(.*)/);
+                if (nestedFirstField) {
+                  nestedObject[nestedFirstField[1]] = coerce(nestedFirstField[2].trim());
+                  nestedHasFields = true;
+                } else if (nestedItemLine) {
+                  nestedItems.push(coerce(nestedItemLine));
+                  cursor += 1;
+                  continue;
+                }
+
+                cursor += 1;
+                while (cursor < lines.length && /^        \w/.test(lines[cursor])) {
+                  const nestedAttr = lines[cursor].match(/^        (\w[\w_]*):\s*(.*)/);
+                  if (nestedAttr) {
+                    const attrValue = nestedAttr[2].trim();
+                    nestedObject[nestedAttr[1]] = attrValue.startsWith('[') && attrValue.endsWith(']')
+                      ? attrValue.slice(1, -1).split(',').map((value) => coerce(value.trim())).filter(Boolean)
+                      : coerce(attrValue);
+                    nestedHasFields = true;
+                  }
+                  cursor += 1;
+                }
+
+                nestedItems.push(nestedHasFields ? nestedObject : coerce(nestedItemLine));
+              }
+              objectValue[nestedKey] = nestedItems;
+              hasObjectFields = true;
+              continue;
+            }
+            objectValue[nestedKey] = coerce(nestedValue);
             hasObjectFields = true;
           }
           cursor += 1;
@@ -438,6 +498,74 @@ function applyModeration(template, moderationIndex) {
   };
 }
 
+function normalizeProviderRecords(frontmatter) {
+  const providers = Array.isArray(frontmatter.providers) ? frontmatter.providers : [];
+  if (providers.length > 0) {
+    return providers;
+  }
+
+  const legacyModels = Array.isArray(frontmatter.models) ? frontmatter.models : [];
+  if (legacyModels.length === 0) {
+    return [];
+  }
+
+  return [{
+    id: 'google-ai-studio',
+    family: 'gemini-image',
+    models: legacyModels.map((entry) => {
+      if (typeof entry === 'string') {
+        return { id: entry, quality: 'untested' };
+      }
+      return {
+        id: entry.name || entry.id || '',
+        quality: entry.quality || 'untested',
+        prompt_variant: entry.prompt_variant || 'default',
+      };
+    }).filter((entry) => entry.id),
+  }];
+}
+
+function canonicalModelId(value) {
+  const raw = String(value || '').trim().toLowerCase();
+  if (!raw) return '';
+  if (raw === 'gpt-image2' || raw === 'gpt image 2') return 'gpt-image-2';
+  if (raw === 'gpt-image' || raw === 'gpt image') return 'gpt-image-1';
+  if (raw === 'nano-banana-pro' || raw === 'nano-banana-pro-preview') return 'gemini-3-pro-image-preview';
+  if (raw === 'nano-banana-2' || raw === 'nano-banana-flash') return 'gemini-3.1-flash-image-preview';
+  if (raw === 'nano-banana' || raw === 'nano-banana-1') return 'gemini-2.5-flash-image';
+  return String(value || '').trim();
+}
+
+function getModelPriority(modelId) {
+  const canonical = canonicalModelId(modelId);
+  if (canonical === 'gpt-image-2') return 0;
+  if (canonical === 'gemini-3-pro-image-preview') return 1;
+  if (canonical === 'gemini-3.1-flash-image-preview') return 2;
+  if (canonical === 'gpt-image-1') return 3;
+  if (canonical === 'gemini-2.5-flash-image') return 4;
+  if (canonical === 'gpt-5.4') return 5;
+  return 9;
+}
+
+function deriveRecommendedModel(providers) {
+  let best = null;
+  for (const provider of providers || []) {
+    for (const model of provider.models || []) {
+      const modelId = canonicalModelId(model.id);
+      if (!modelId) continue;
+      const candidate = {
+        provider: provider.id || '',
+        model: modelId,
+        priority: getModelPriority(modelId)
+      };
+      if (!best || candidate.priority < best.priority) {
+        best = candidate;
+      }
+    }
+  }
+  return best;
+}
+
 function buildSampleRecords(sampleEntries, repo, branch, templateDir) {
   const entries = Array.isArray(sampleEntries) ? sampleEntries : [];
 
@@ -451,9 +579,12 @@ function buildSampleRecords(sampleEntries, repo, branch, templateDir) {
     const samplePath = joinRepoPath(templateDir, sampleFile);
     return {
       file: sampleFile,
+      provider: sample.provider || '',
       model: sample.model || '',
+      prompt_variant: sample.prompt_variant || '',
       prompt: sample.prompt || '',
       aspect: sample.aspect || '',
+      size: sample.size || '',
       image: `${GITHUB_RAW}/${repo}/${branch}/${samplePath}`,
       page_url: `${GITHUB_WEB}/${repo}/blob/${branch}/${samplePath}`,
     };
@@ -538,6 +669,8 @@ function buildTemplateRecord({ repoConfig, repoInfo, templateDirPath, templateSl
   const primaryAction = distribution === 'bundled' ? 'use' : 'install';
   const primaryCmd = primaryAction === 'use' ? useCmd : installCmd;
   const samples = buildSampleRecords(frontmatter.samples, repoConfig.repo, repoInfo.default_branch, normalizedTemplateDir);
+  const providers = normalizeProviderRecords(frontmatter);
+  const recommended = deriveRecommendedModel(providers);
   const sampleImage = samples[0]?.image || '';
   const sampleImagePageUrl = samples[0]?.page_url || '';
 
@@ -556,6 +689,14 @@ function buildTemplateRecord({ repoConfig, repoInfo, templateDirPath, templateSl
     version: frontmatter.version || '1.0.0',
     profile: frontmatter.profile || 'general',
     tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : [],
+    models: Array.isArray(frontmatter.models) ? frontmatter.models : [],
+    providers,
+    capabilities: frontmatter.capabilities || {},
+    prompt_variants: frontmatter.prompt_variants || {},
+    recommended_provider: recommended?.provider || '',
+    recommended_model: recommended?.model || '',
+    model_priority: Number.isFinite(recommended?.priority) ? recommended.priority : 99,
+    schema_version: providers.length > 0 || frontmatter.capabilities || frontmatter.prompt_variants ? 2 : 1,
     aspect: frontmatter.aspect || '1:1',
     difficulty: frontmatter.difficulty || 'beginner',
     description,

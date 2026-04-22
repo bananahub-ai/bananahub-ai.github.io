@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "catalog_type": "discovered",
-  "generated": "2026-04-22T07:28:44.274Z",
+  "generated": "2026-04-22T15:34:33.749Z",
   "site": {
     "url": "https://bananahub.ai/",
     "hub_api_base": "https://worker.bananahub.ai/api",
@@ -69,15 +69,64 @@
         "workshop",
         "editorial"
       ],
+      "models": [
+        {
+          "name": "gemini-3-pro-image-preview",
+          "tested": true,
+          "quality": "best"
+        },
+        {
+          "name": "gemini-3.1-flash-image-preview",
+          "tested": false,
+          "quality": "good"
+        },
+        {
+          "name": "gemini-2.5-flash-image",
+          "tested": false,
+          "quality": "good"
+        }
+      ],
+      "providers": [
+        {
+          "id": "google-ai-studio",
+          "family": "gemini-image",
+          "models": [
+            {
+              "id": "gemini-3-pro-image-preview",
+              "quality": "best",
+              "prompt_variant": "default"
+            },
+            {
+              "id": "gemini-3.1-flash-image-preview",
+              "quality": "good",
+              "prompt_variant": "default"
+            },
+            {
+              "id": "gemini-2.5-flash-image",
+              "quality": "good",
+              "prompt_variant": "default"
+            }
+          ]
+        }
+      ],
+      "capabilities": {},
+      "prompt_variants": {},
+      "recommended_provider": "google-ai-studio",
+      "recommended_model": "gemini-3-pro-image-preview",
+      "model_priority": 1,
+      "schema_version": 2,
       "aspect": "3:4",
       "difficulty": "beginner",
       "description": "生成有明确职业身份、环境叙事和摄影语言的匠人人像。适合陶艺师、木工、花艺师、面包师、制表师等“人物 + 手上动作 + 工作空间”场景。",
       "samples": [
         {
           "file": "samples/sample-3-pro-01.png",
+          "provider": "",
           "model": "gemini-3-pro-image-preview",
+          "prompt_variant": "",
           "prompt": "A photorealistic environmental portrait of an elderly Japanese ceramicist carefully shaping a bowl on a potter's wheel, in a rustic workshop filled with clay tools and unfinished pottery. Lit by warm golden-hour window light and captured with an 85mm portrait lens with shallow depth of field. Quiet mastery, tactile craftsmanship, and grounded realism.",
           "aspect": "3:4",
+          "size": "",
           "image": "https://raw.githubusercontent.com/zkywalker/nanobanana-artisan-portrait/main/samples/sample-3-pro-01.png",
           "page_url": "https://github.com/zkywalker/nanobanana-artisan-portrait/blob/main/samples/sample-3-pro-01.png"
         }
@@ -127,23 +176,65 @@
         "landmark",
         "miniature"
       ],
+      "models": [
+        {
+          "name": "gemini-3-pro-image-preview",
+          "tested": true,
+          "quality": "best"
+        },
+        {
+          "name": "gemini-3.1-flash-image-preview",
+          "tested": false,
+          "quality": "good"
+        }
+      ],
+      "providers": [
+        {
+          "id": "google-ai-studio",
+          "family": "gemini-image",
+          "models": [
+            {
+              "id": "gemini-3-pro-image-preview",
+              "quality": "best",
+              "prompt_variant": "default"
+            },
+            {
+              "id": "gemini-3.1-flash-image-preview",
+              "quality": "good",
+              "prompt_variant": "default"
+            }
+          ]
+        }
+      ],
+      "capabilities": {},
+      "prompt_variants": {},
+      "recommended_provider": "google-ai-studio",
+      "recommended_model": "gemini-3-pro-image-preview",
+      "model_priority": 1,
+      "schema_version": 2,
       "aspect": "1:1",
       "difficulty": "intermediate",
       "description": "Guide the agent through turning a city name or a mixed Chinese brief into a reusable English prompt for a premium square city diorama. The workflow can auto-resolve landmarks, geography, vegetation, and cultural micro-details, or accept direct overrides when the user wants exact control.",
       "samples": [
         {
           "file": "samples/sample-3-pro-01.png",
+          "provider": "",
           "model": "gemini-3-pro-image-preview",
+          "prompt_variant": "",
           "prompt": "Create a premium architectural diorama of Beijing on a clean square base, shown in a 45-degree top-down isometric view. Use a dense, highly accurate photorealistic scale model cityscape. Automatically identify and seamlessly integrate Beijing's most iconic historical and modern landmarks, keeping them instantly recognizable and compositionally balanced. Include the city's real geographic signature, such as the central axis planning logic and landmark urban layout, plus native northern Chinese vegetation and authentic local micro-details such as bicycles, buses, hutong-adjacent street elements, and tiny everyday crowds. Place a medium-size black Chinese title \\\"北京\\\" centered at the top. Pure white background, refined studio architectural-model lighting, subtle tilt-shift look.",
           "aspect": "1:1",
+          "size": "",
           "image": "https://raw.githubusercontent.com/zkywalker/nanobanana-city-landmark-diorama/main/samples/sample-3-pro-01.png",
           "page_url": "https://github.com/zkywalker/nanobanana-city-landmark-diorama/blob/main/samples/sample-3-pro-01.png"
         },
         {
           "file": "samples/sample-3-pro-02.png",
+          "provider": "",
           "model": "gemini-3-pro-image-preview",
+          "prompt_variant": "",
           "prompt": "Create a premium architectural diorama of Beijing on a clean square base, shown in a 45-degree top-down isometric view. Use a dense, highly accurate photorealistic scale model cityscape. Feature these required landmarks prominently: the China World Trade Center complex, the CCTV Headquarters, and the surrounding Guomao CBD skyline. Keep the district instantly recognizable as Beijing's Guomao CBD while preserving Beijing-specific urban context. Include real local geography and city texture cues, native northern Chinese vegetation, multilane ring-road urban logic, and authentic local micro-details such as taxis, buses, crosswalk infrastructure, and tiny office-district crowds. Place a medium-size black Chinese title \\\"北京·国贸CBD\\\" centered at the top. Pure white background, refined studio architectural-model lighting, subtle tilt-shift look.",
           "aspect": "1:1",
+          "size": "",
           "image": "https://raw.githubusercontent.com/zkywalker/nanobanana-city-landmark-diorama/main/samples/sample-3-pro-02.png",
           "page_url": "https://github.com/zkywalker/nanobanana-city-landmark-diorama/blob/main/samples/sample-3-pro-02.png"
         }

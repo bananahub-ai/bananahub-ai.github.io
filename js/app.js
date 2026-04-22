@@ -16,7 +16,8 @@ const GITHUB_WEB = 'https://github.com';
 const DEFAULT_FILTERS = {
   source: 'all',
   profile: 'all',
-  difficulty: 'all'
+  difficulty: 'all',
+  provider: 'all'
 };
 
 const DEFAULT_SORT = 'recommended';
@@ -81,6 +82,7 @@ const dom = {
   modalVersion: document.getElementById('modal-version'),
   modalAspect: document.getElementById('modal-aspect'),
   modalUpdated: document.getElementById('modal-updated'),
+  modalRecommendedModel: document.getElementById('modal-recommended-model'),
   modalDistribution: document.getElementById('modal-distribution'),
   modalUsageItem: document.getElementById('modal-usage-item'),
   modalUsage: document.getElementById('modal-usage'),
@@ -183,6 +185,15 @@ function bindEvents() {
   document.querySelectorAll('[data-difficulty]').forEach((button) => {
     button.addEventListener('click', () => {
       currentFilters.difficulty = button.dataset.difficulty || DEFAULT_FILTERS.difficulty;
+      writeUrlState();
+      syncUIFromState();
+      render();
+    });
+  });
+
+  document.querySelectorAll('[data-provider]').forEach((button) => {
+    button.addEventListener('click', () => {
+      currentFilters.provider = button.dataset.provider || DEFAULT_FILTERS.provider;
       writeUrlState();
       syncUIFromState();
       render();
@@ -379,6 +390,7 @@ function readUrlState() {
   const source = params.get('source');
   const profile = params.get('profile');
   const difficulty = params.get('difficulty');
+  const provider = params.get('provider');
   const sort = params.get('sort');
   const query = params.get('q');
 
@@ -392,6 +404,10 @@ function readUrlState() {
 
   if (isAllowedValue('difficulty', difficulty)) {
     currentFilters.difficulty = difficulty;
+  }
+
+  if (isAllowedValue('provider', provider)) {
+    currentFilters.provider = provider;
   }
 
   if (isAllowedValue('sort', sort)) {
@@ -436,6 +452,10 @@ function writeUrlState() {
     params.set('difficulty', currentFilters.difficulty);
   }
 
+  if (currentFilters.provider !== DEFAULT_FILTERS.provider) {
+    params.set('provider', currentFilters.provider);
+  }
+
   if (currentSort !== DEFAULT_SORT) {
     params.set('sort', currentSort);
   }
@@ -475,6 +495,10 @@ function syncUIFromState() {
 
   document.querySelectorAll('[data-difficulty]').forEach((button) => {
     button.classList.toggle('active', button.dataset.difficulty === currentFilters.difficulty);
+  });
+
+  document.querySelectorAll('[data-provider]').forEach((button) => {
+    button.classList.toggle('active', button.dataset.provider === currentFilters.provider);
   });
 
   document.querySelectorAll('[data-sort]').forEach((button) => {
@@ -559,6 +583,14 @@ function updateResultsPanel() {
     );
   }
 
+  if (currentFilters.provider !== DEFAULT_FILTERS.provider) {
+    activeDetails.push(
+      t('common.results.provider', {
+        value: currentFilters.provider
+      })
+    );
+  }
+
   dom.resultCount.textContent = formatCount(visibleTemplates.length);
   dom.curatedCount.textContent = formatCount(visibleCuratedCount);
   dom.discoveredCount.textContent = formatCount(visibleDiscoveredCount);
@@ -606,6 +638,7 @@ function hasActiveState() {
     || currentFilters.source !== DEFAULT_FILTERS.source
     || currentFilters.profile !== DEFAULT_FILTERS.profile
     || currentFilters.difficulty !== DEFAULT_FILTERS.difficulty
+    || currentFilters.provider !== DEFAULT_FILTERS.provider
     || currentSort !== DEFAULT_SORT
   );
 }
@@ -621,6 +654,7 @@ function renderCard(template) {
     .slice(0, 3)
     .map((tag) => `<span class="tag" title="${escAttr(tag)}">${escHtml(tag)}</span>`)
     .join('');
+  const providerSummary = getProviderSummary(template);
   const hasSampleImage = Boolean(primarySample?.image);
   const previewLabel = hasSampleImage ? t('common.preview.loading') : t('common.preview.unavailable');
   const sourceUrl = template.template_url || template.repo_url || '#';
@@ -706,6 +740,8 @@ function renderCard(template) {
           ${tagsHtml || `<span class="tag">${escHtml(t('common.template.noTags'))}</span>`}
         </div>
 
+        ${providerSummary ? `<div class="card-support">${providerSummary}</div>` : ''}
+
         <div class="card-meta-inline">
           <span>${escHtml(translateEnum('source', sourceValue, sourceValue))}</span>
           <span>${escHtml(translateEnum('difficulty', difficultyValue, difficultyValue))}</span>
@@ -740,6 +776,25 @@ function renderCard(template) {
       </div>
     </article>
   `;
+}
+
+function getProviderSummary(template) {
+  const providers = (template.providers || []).slice(0, 3);
+  const models = (template.models || []).slice(0, 2);
+  if (!providers.length && !models.length) {
+    return '';
+  }
+  const chunks = [];
+  if (template.recommended_model) {
+    chunks.push(`<strong>${escHtml(t('common.card.recommended'))}:</strong> ${escHtml(template.recommended_model)}`);
+  }
+  if (models.length) {
+    chunks.push(`<strong>${escHtml(t('common.card.models'))}:</strong> ${escHtml(models.join(', '))}`);
+  }
+  if (providers.length) {
+    chunks.push(`<strong>${escHtml(t('common.card.providers'))}:</strong> ${escHtml(providers.join(', '))}`);
+  }
+  return chunks.join(' <span>|</span> ');
 }
 
 function renderBadge(className, label) {
@@ -902,6 +957,9 @@ function populateModal(template) {
   dom.modalVersion.textContent = template.version || t('common.value.unknown');
   dom.modalAspect.textContent = template.aspect || t('common.value.na');
   dom.modalUpdated.textContent = formatDate(template.updated || template.created);
+  dom.modalRecommendedModel.textContent = template.recommended_model
+    ? `${template.recommended_model}${template.recommended_provider ? ` (${template.recommended_provider})` : ''}`
+    : t('common.value.unknown');
   dom.modalDistribution.textContent = translateEnum('distribution', distributionValue, distributionValue);
   dom.modalUsage.textContent = getUsageTotalDisplay(stats);
   dom.modalInstalls.textContent = getInstallDisplay(stats);
