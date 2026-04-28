@@ -122,6 +122,10 @@ const translations = {
         recommended: 'Recommended',
         models: 'Models',
         providers: 'Providers',
+        showSupport: 'Show support',
+        hideSupport: 'Hide support',
+        modelsCount: '{count} models',
+        providersCount: '{count} providers',
       },
       empty: {
         loadFailedTitle: 'Failed to load templates.',
@@ -405,6 +409,10 @@ const translations = {
         recommended: '推荐模型',
         models: '支持模型',
         providers: '支持供应商',
+        showSupport: '展开支持范围',
+        hideSupport: '收起支持范围',
+        modelsCount: '{count} 个模型',
+        providersCount: '{count} 个供应商',
       },
       empty: {
         loadFailedTitle: '模板加载失败。',
