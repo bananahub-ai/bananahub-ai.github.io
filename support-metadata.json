@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "description": "Display metadata for BananaHub image providers and models. Logo src fields are optional and can point to future static assets.",
+  "providers": {
+    "google-ai-studio": {
+      "name": {
+        "en": "Google AI Studio",
+        "zh-CN": "Google AI Studio"
+      },
+      "short_name": {
+        "en": "Gemini",
+        "zh-CN": "Gemini"
+      },
+      "family": "gemini-image",
+      "homepage": "https://aistudio.google.com/",
+      "accent": "#4285f4",
+      "logo": {
+        "type": "text",
+        "mark": "G",
+        "src": ""
+      }
+    },
+    "openai": {
+      "name": {
+        "en": "OpenAI",
+        "zh-CN": "OpenAI"
+      },
+      "short_name": {
+        "en": "OpenAI",
+        "zh-CN": "OpenAI"
+      },
+      "family": "gpt-image",
+      "homepage": "https://platform.openai.com/docs/guides/image-generation",
+      "accent": "#10a37f",
+      "logo": {
+        "type": "text",
+        "mark": "AI",
+        "src": ""
+      }
+    },
+    "chatgpt-compatible": {
+      "name": {
+        "en": "ChatGPT-compatible",
+        "zh-CN": "ChatGPT 兼容"
+      },
+      "short_name": {
+        "en": "ChatGPT",
+        "zh-CN": "ChatGPT"
+      },
+      "family": "openai-compatible",
+      "homepage": "",
+      "accent": "#1c211c",
+      "logo": {
+        "type": "text",
+        "mark": "GPT",
+        "src": ""
+      }
+    }
+  },
+  "models": {
+    "gemini-3-pro-image-preview": {
+      "name": {
+        "en": "Gemini 3 Pro Image Preview",
+        "zh-CN": "Gemini 3 Pro Image Preview"
+      },
+      "provider": "google-ai-studio",
+      "family": "gemini-image",
+      "accent": "#4285f4",
+      "logo": {
+        "type": "text",
+        "mark": "G3",
+        "src": ""
+      }
+    },
+    "gemini-3.1-flash-image-preview": {
+      "name": {
+        "en": "Gemini 3.1 Flash Image Preview",
+        "zh-CN": "Gemini 3.1 Flash Image Preview"
+      },
+      "provider": "google-ai-studio",
+      "family": "gemini-image",
+      "accent": "#4285f4",
+      "logo": {
+        "type": "text",
+        "mark": "Gf",
+        "src": ""
+      }
+    },
+    "gemini-2.5-flash-image": {
+      "name": {
+        "en": "Gemini 2.5 Flash Image",
+        "zh-CN": "Gemini 2.5 Flash Image"
+      },
+      "provider": "google-ai-studio",
+      "family": "gemini-image",
+      "accent": "#4285f4",
+      "logo": {
+        "type": "text",
+        "mark": "Gf",
+        "src": ""
+      }
+    },
+    "gpt-image-2": {
+      "name": {
+        "en": "GPT Image 2",
+        "zh-CN": "GPT Image 2"
+      },
+      "provider": "openai",
+      "family": "gpt-image",
+      "accent": "#10a37f",
+      "logo": {
+        "type": "text",
+        "mark": "AI",
+        "src": ""
+      }
+    },
+    "gpt-image-1": {
+      "name": {
+        "en": "GPT Image 1",
+        "zh-CN": "GPT Image 1"
+      },
+      "provider": "openai",
+      "family": "gpt-image",
+      "accent": "#10a37f",
+      "logo": {
+        "type": "text",
+        "mark": "AI",
+        "src": ""
+      }
+    }
+  }
+}

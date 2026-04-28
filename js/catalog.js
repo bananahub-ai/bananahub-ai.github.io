@@ -1,6 +1,12 @@
 // js/catalog.js - Data layer for BananaHub
 
 let catalog = null;
+let supportMetadata = null;
+
+const EMPTY_SUPPORT_METADATA = Object.freeze({
+  providers: {},
+  models: {}
+});
 
 export async function loadCatalog() {
   if (catalog) return catalog;
@@ -10,8 +16,46 @@ export async function loadCatalog() {
   return catalog;
 }
 
+export async function loadSupportMetadata() {
+  if (supportMetadata) return supportMetadata;
+
+  try {
+    const res = await fetch('support-metadata.json');
+    if (!res.ok) throw new Error(`Failed to load support metadata: ${res.status}`);
+    supportMetadata = await res.json();
+  } catch (error) {
+    console.warn('Failed to load support metadata:', error);
+    supportMetadata = EMPTY_SUPPORT_METADATA;
+  }
+
+  return supportMetadata;
+}
+
 export function getTemplates() {
   return catalog ? catalog.templates : [];
+}
+
+export function getTemplateProviderIds(template) {
+  return uniqueItems((template.providers || []).map((provider) => (
+    typeof provider === 'string' ? provider : provider?.id
+  )));
+}
+
+export function getTemplateModelIds(template) {
+  const directModels = (template.models || []).map((model) => (
+    typeof model === 'string' ? model : model?.id || model?.name
+  ));
+  const providerModels = (template.providers || []).flatMap((provider) => (
+    typeof provider === 'string'
+      ? []
+      : (provider?.models || []).map((model) => model?.id || model?.name)
+  ));
+
+  return uniqueItems([
+    ...directModels,
+    ...providerModels,
+    template.recommended_model
+  ]);
 }
 
 export function filterTemplates(templates, filters) {
@@ -25,7 +69,7 @@ export function filterTemplates(templates, filters) {
     if (filters.difficulty && filters.difficulty !== 'all' && template.difficulty !== filters.difficulty) {
       return false;
     }
-    if (filters.provider && filters.provider !== 'all' && !(template.providers || []).includes(filters.provider)) {
+    if (filters.provider && filters.provider !== 'all' && !getTemplateProviderIds(template).includes(filters.provider)) {
       return false;
     }
     return true;
@@ -124,11 +168,15 @@ export function searchTemplates(templates, query) {
       template.distribution,
       template.primary_action,
       template.difficulty,
-      ...(template.providers || []),
-      ...(template.models || []),
+      ...getTemplateProviderIds(template),
+      ...getTemplateModelIds(template),
       ...(template.tags || [])
     ].join(' ').toLowerCase();
 
     return terms.every((term) => searchable.includes(term));
   });
+}
+
+function uniqueItems(items) {
+  return [...new Set(items.map((item) => String(item || '').trim()).filter(Boolean))];
 }

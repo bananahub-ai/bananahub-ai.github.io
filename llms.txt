@@ -13,6 +13,7 @@ Preferred machine-readable entry points:
 - https://bananahub.ai/catalog.json — merged catalog with curated + discovered templates
 - https://bananahub.ai/catalog-curated.json — curated-only catalog
 - https://bananahub.ai/catalog-discovered.json — discovered-only catalog
+- https://bananahub.ai/support-metadata.json — provider/model display metadata and logo placeholders
 - https://bananahub.ai/agent-catalog.md — markdown digest of the current catalog
 - https://bananahub.ai/llms.txt — this overview
 

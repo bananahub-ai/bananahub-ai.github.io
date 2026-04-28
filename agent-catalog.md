@@ -11,6 +11,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Merged Catalog JSON: https://bananahub.ai/catalog.json
 - Curated Catalog JSON: https://bananahub.ai/catalog-curated.json
 - Discovered Catalog JSON: https://bananahub.ai/catalog-discovered.json
+- Support Metadata JSON: https://bananahub.ai/support-metadata.json
 - llms.txt: https://bananahub.ai/llms.txt
 
 ## Curated Templates (11)

@@ -22,6 +22,8 @@ The goal is not to create one giant prompt dump. The goal is to keep the base wo
 - `catalog-discovered.json` — discovered-only catalog
 - `llms.txt` — short agent-oriented overview with canonical entry points
 - `agent-catalog.md` — markdown digest of the current catalog
+
+Hand-maintained display metadata lives in `support-metadata.json` for provider/model names, marks, colors, and future logo asset paths.
 - `robots.txt` — crawler policy with sitemap reference
 - `sitemap.xml` — sitemap for the site and machine-readable files
 
@@ -66,7 +68,7 @@ GITHUB_TOKEN=ghp_xxx node scripts/build-catalog.js
 
 ## Notes
 
-- Prefer `catalog.json`, `catalog-curated.json`, `catalog-discovered.json`, `llms.txt`, and `agent-catalog.md` for agent access instead of scraping the visual homepage
+- Prefer `catalog.json`, `catalog-curated.json`, `catalog-discovered.json`, `support-metadata.json`, `llms.txt`, and `agent-catalog.md` for agent access instead of scraping the visual homepage
 - Generated install commands are intended to stay truthful to the `bananahub` CLI behavior
 - Curated templates win over discovered duplicates in the merged catalog
 

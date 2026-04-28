@@ -1238,6 +1238,7 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 5px;
   min-height: 24px;
   max-width: 100%;
   padding: 0 9px;
@@ -1257,9 +1258,44 @@ main {
 }
 
 .support-provider-chip.is-recommended {
-  border-color: rgba(143, 76, 22, 0.28);
+  border-color: var(--support-chip-accent, rgba(143, 76, 22, 0.28));
   background: rgba(217, 134, 42, 0.14);
   color: var(--accent-deep);
+}
+
+.support-provider-mark,
+.support-model-mark {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 999px;
+  background: var(--support-chip-accent, var(--accent-deep));
+  color: #fff7e6;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.54rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.support-model-mark {
+  width: 18px;
+  height: 18px;
+  font-size: 0.5rem;
+}
+
+.support-logo-img {
+  object-fit: contain;
+  background: transparent;
+}
+
+.support-provider-chip-text,
+.support-model-chip-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .support-provider-chip.is-model-only {
@@ -1377,6 +1413,7 @@ main {
 .support-chip {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   min-height: 28px;
   max-width: 100%;
   padding: 0 10px;
@@ -1390,8 +1427,12 @@ main {
   text-overflow: ellipsis;
 }
 
+.support-model-chip {
+  padding-left: 6px;
+}
+
 .support-model-chip.is-recommended {
-  border-color: rgba(143, 76, 22, 0.28);
+  border-color: var(--support-chip-accent, rgba(143, 76, 22, 0.28));
   background: rgba(217, 134, 42, 0.14);
   color: var(--accent-deep);
 }

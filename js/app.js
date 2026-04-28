@@ -1,4 +1,13 @@
-import { loadCatalog, getTemplates, filterTemplates, sortTemplates, searchTemplates } from './catalog.js';
+import {
+  loadCatalog,
+  loadSupportMetadata,
+  getTemplates,
+  filterTemplates,
+  sortTemplates,
+  searchTemplates,
+  getTemplateProviderIds,
+  getTemplateModelIds
+} from './catalog.js';
 import { fetchAllStats, getTemplateKey } from './api.js';
 import { initGitHubStars } from './github-stars.js';
 import {
@@ -31,6 +40,7 @@ const EMPTY_STATS = {
 };
 
 let catalog = null;
+let supportMetadata = { providers: {}, models: {} };
 let allTemplates = [];
 let visibleTemplates = [];
 let statsMap = new Map();
@@ -117,6 +127,7 @@ async function init() {
 
   try {
     catalog = await loadCatalog();
+    supportMetadata = await loadSupportMetadata();
     allTemplates = getTemplates();
     didCatalogLoadFail = false;
   } catch (error) {
@@ -851,6 +862,7 @@ function renderRecommendedHero(model, provider) {
 }
 
 function renderProviderChip(providerId, options = {}) {
+  const meta = getProviderMeta(providerId);
   const label = formatProviderLabel(providerId);
   const shortLabel = formatProviderLabel(providerId, { short: true });
   const model = String(options.model || '').trim();
@@ -858,8 +870,14 @@ function renderProviderChip(providerId, options = {}) {
     ? `${t('common.card.recommended')}: ${label} · ${model}`
     : label;
   const className = `support-provider-chip${options.recommended ? ' is-recommended' : ''}`;
+  const style = renderSupportAccentStyle(meta);
 
-  return `<span class="${className}" title="${escAttr(title)}">${escHtml(shortLabel)}</span>`;
+  return `
+    <span class="${className}"${style} title="${escAttr(title)}">
+      ${renderSupportLogo(meta.logo, shortLabel, 'support-provider-mark')}
+      <span class="support-provider-chip-text">${escHtml(shortLabel)}</span>
+    </span>
+  `;
 }
 
 function renderProviderSupportDetails(template, fallbackModels, recommendedProvider, recommendedModel) {
@@ -895,6 +913,7 @@ function renderProviderSupportGroup(group, recommendedProvider, recommendedModel
 }
 
 function renderProviderModelChip(model, providerId, recommendedProvider, recommendedModel) {
+  const meta = getModelMeta(model);
   const isRecommended = Boolean(
     providerId
     && providerId === recommendedProvider
@@ -904,8 +923,14 @@ function renderProviderModelChip(model, providerId, recommendedProvider, recomme
     ? `${model} · ${t('common.card.recommended')}`
     : model;
   const className = `support-chip support-model-chip${isRecommended ? ' is-recommended' : ''}`;
+  const style = renderSupportAccentStyle(meta);
 
-  return `<span class="${className}" title="${escAttr(label)}">${escHtml(model)}</span>`;
+  return `
+    <span class="${className}"${style} title="${escAttr(label)}">
+      ${renderSupportLogo(meta.logo, model, 'support-model-mark')}
+      <span class="support-model-chip-text">${escHtml(model)}</span>
+    </span>
+  `;
 }
 
 function getProviderSupportGroups(template) {
@@ -949,11 +974,58 @@ function formatProviderLabel(providerId, options = {}) {
     return t('common.value.notDeclared');
   }
 
-  if (options.short) {
-    return t(`common.providerShort.${providerKey}`, {}, translateEnum('provider', providerKey, providerKey));
+  const meta = getProviderMeta(providerKey);
+  const field = options.short ? meta.short_name : meta.name;
+  return getLocalizedMetadataText(field, humanizeMetadataId(providerKey));
+}
+
+function getProviderMeta(providerId) {
+  return supportMetadata?.providers?.[providerId] || {};
+}
+
+function getModelMeta(modelId) {
+  return supportMetadata?.models?.[modelId] || {};
+}
+
+function getLocalizedMetadataText(value, fallback) {
+  if (typeof value === 'string' && value.trim()) {
+    return value.trim();
   }
 
-  return translateEnum('provider', providerKey, providerKey);
+  if (!value || typeof value !== 'object') {
+    return fallback;
+  }
+
+  const language = getCurrentLanguage();
+  return value[language] || value.en || value['zh-CN'] || Object.values(value).find(Boolean) || fallback;
+}
+
+function renderSupportLogo(logo, fallback, className) {
+  const source = String(logo?.src || '').trim();
+  const mark = String(logo?.mark || fallback || '').trim().slice(0, 3);
+
+  if (source) {
+    return `<img class="support-logo-img ${className}" src="${escAttr(source)}" alt="" loading="lazy">`;
+  }
+
+  return `<span class="${className}" aria-hidden="true">${escHtml(mark || '•')}</span>`;
+}
+
+function renderSupportAccentStyle(meta) {
+  const accent = String(meta?.accent || '').trim();
+  if (!/^#[0-9a-f]{3,8}$/i.test(accent)) {
+    return '';
+  }
+
+  return ` style="--support-chip-accent: ${escAttr(accent)}"`;
+}
+
+function humanizeMetadataId(value) {
+  return String(value || '')
+    .split(/[-_]+/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
 }
 
 function getOrderedSupportProviders(providers, recommendedProvider) {
@@ -1007,21 +1079,11 @@ function getUniqueItems(items) {
 }
 
 function extractProviderIds(template) {
-  return (template.providers || [])
-    .map((provider) => (typeof provider === 'string' ? provider : provider?.id || ''))
-    .filter(Boolean);
+  return getTemplateProviderIds(template);
 }
 
 function extractModelIds(template) {
-  const direct = (template.models || [])
-    .map((model) => (typeof model === 'string' ? model : model?.id || model?.name || ''))
-    .filter(Boolean);
-  if (direct.length > 0) {
-    return direct;
-  }
-  return (template.providers || [])
-    .flatMap((provider) => (provider?.models || []).map((model) => model?.id || model?.name || ''))
-    .filter(Boolean);
+  return getTemplateModelIds(template);
 }
 
 function renderBadge(className, label) {
