@@ -375,10 +375,12 @@ function listLocalDirectoryItems(localRepoPath, relativePath) {
     return null;
   }
 
-  return fs.readdirSync(dirPath, { withFileTypes: true }).map((entry) => ({
-    name: entry.name,
-    type: entry.isDirectory() ? 'dir' : 'file',
-  }));
+  return fs.readdirSync(dirPath, { withFileTypes: true })
+    .filter((entry) => !entry.name.startsWith('.'))
+    .map((entry) => ({
+      name: entry.name,
+      type: entry.isDirectory() ? 'dir' : 'file',
+    }));
 }
 
 async function fetchDiscoveredCandidates() {

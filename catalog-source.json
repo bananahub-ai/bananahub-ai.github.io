@@ -7,6 +7,13 @@
       "local_path": "../bananahub-skill",
       "path": "references/templates",
       "official": true
+    },
+    {
+      "repo": "bananahub-ai/templates",
+      "type": "official",
+      "local_path": "../templates",
+      "path": "",
+      "official": true
     }
   ]
 }

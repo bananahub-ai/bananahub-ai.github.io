@@ -3,5 +3,14 @@
   "pinned_templates": [],
   "featured_templates": [],
   "banned_repos": [],
-  "banned_templates": []
+  "banned_templates": [
+    { "repo": "bananahub-ai/bananahub-skill", "id": "app-web-logo-system" },
+    { "repo": "bananahub-ai/bananahub-skill", "id": "article-illustration-workflow" },
+    { "repo": "bananahub-ai/bananahub-skill", "id": "asset-style-consistency-pack" },
+    { "repo": "bananahub-ai/bananahub-skill", "id": "consistent-character-storyboard" },
+    { "repo": "bananahub-ai/bananahub-skill", "id": "cute-sticker" },
+    { "repo": "bananahub-ai/bananahub-skill", "id": "cyberpunk-city" },
+    { "repo": "bananahub-ai/bananahub-skill", "id": "minimal-wallpaper" },
+    { "repo": "bananahub-ai/bananahub-skill", "id": "readme-launch-visual" }
+  ]
 }
