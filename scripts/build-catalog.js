@@ -628,22 +628,22 @@ function getRecommendationPriority({ provider, model, quality }) {
   const canonical = canonicalModelId(model);
   const normalizedQuality = String(quality || '').toLowerCase();
 
-  if (provider === 'google-ai-studio' && normalizedQuality === 'best') {
+  if (canonical === 'gpt-image-2') {
     return 0;
   }
-  if (provider === 'google-ai-studio' && normalizedQuality === 'good') {
+  if (provider === 'openai' && ['best', 'good', 'ok', 'tested'].includes(normalizedQuality)) {
     return 1;
   }
-  if (provider === 'openai' && ['best', 'good', 'ok', 'tested'].includes(normalizedQuality)) {
+  if (provider === 'google-ai-studio' && normalizedQuality === 'best') {
     return 2;
   }
-  if (canonical === 'gemini-3-pro-image-preview') {
+  if (provider === 'google-ai-studio' && normalizedQuality === 'good') {
     return 3;
   }
-  if (canonical === 'gemini-3.1-flash-image-preview') {
+  if (canonical === 'gemini-3-pro-image-preview') {
     return 4;
   }
-  if (canonical === 'gpt-image-2') {
+  if (canonical === 'gemini-3.1-flash-image-preview') {
     return 5;
   }
   if (canonical === 'gpt-image-1') {
