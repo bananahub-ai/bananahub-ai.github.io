@@ -1,6 +1,6 @@
 # BananaHub Agent Catalog
 
-Generated: 2026-05-17T10:16:12.296Z
+Generated: 2026-05-17T12:18:40.368Z
 
 BananaHub is the installable template network for BananaHub Skill.
 Use `catalog.json` for structured access. This markdown file is a readable digest of the merged catalog.
@@ -35,7 +35,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Install Command: `bananahub add bananahub-ai/templates/app-web-logo-system`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Ftemplates&template_id=app-web-logo-system
 - Template Source: https://github.com/bananahub-ai/templates/tree/main/app-web-logo-system
-- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/app-web-logo-system/samples/sample-gpt-image-2-01.png
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/app-web-logo-system/samples/sample-3-pro-01.png
 
 ### article-illustration-workflow
 - Title: Article Illustration Workflow / 文章配图工作流
@@ -55,7 +55,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Install Command: `bananahub add bananahub-ai/templates/article-illustration-workflow`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Ftemplates&template_id=article-illustration-workflow
 - Template Source: https://github.com/bananahub-ai/templates/tree/main/article-illustration-workflow
-- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/article-illustration-workflow/samples/sample-gpt-image-2-01.png
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/article-illustration-workflow/samples/sample-3-pro-01.png
 
 ### article-one-page-summary
 - Title: Article One-Page Visual Summary / 文章一图流解读
@@ -94,7 +94,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Install Command: `bananahub add bananahub-ai/templates/asset-style-consistency-pack`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Ftemplates&template_id=asset-style-consistency-pack
 - Template Source: https://github.com/bananahub-ai/templates/tree/main/asset-style-consistency-pack
-- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/asset-style-consistency-pack/samples/sample-gpt-image-2-01.png
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/asset-style-consistency-pack/samples/sample-3-pro-01.png
 
 ### background-replace-edit
 - Title: Background Replacement Edit / 背景替换编辑
@@ -133,7 +133,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Install Command: `bananahub add bananahub-ai/templates/consistent-character-storyboard`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Ftemplates&template_id=consistent-character-storyboard
 - Template Source: https://github.com/bananahub-ai/templates/tree/main/consistent-character-storyboard
-- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/consistent-character-storyboard/samples/sample-gpt-image-2-01.png
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/consistent-character-storyboard/samples/sample-3-pro-01.png
 
 ### cute-sticker
 - Title: Cute Chibi Sticker Pack / Q版贴纸表情包
@@ -153,7 +153,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Install Command: `bananahub add bananahub-ai/templates/cute-sticker`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Ftemplates&template_id=cute-sticker
 - Template Source: https://github.com/bananahub-ai/templates/tree/main/cute-sticker
-- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/cute-sticker/samples/sample-gpt-image-2-01.png
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/cute-sticker/samples/sample-3.1-flash-01.png
 
 ### cyberpunk-city
 - Title: Cyberpunk City Nightscape / 赛博朋克城市夜景
@@ -173,7 +173,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Install Command: `bananahub add bananahub-ai/templates/cyberpunk-city`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Ftemplates&template_id=cyberpunk-city
 - Template Source: https://github.com/bananahub-ai/templates/tree/main/cyberpunk-city
-- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/cyberpunk-city/samples/sample-gpt-image-2-01.png
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/cyberpunk-city/samples/sample-3.1-flash-01.png
 
 ### github-repo-visual-kit
 - Title: GitHub Repository Visual Kit / GitHub 仓库运营视觉套件
@@ -212,7 +212,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Primary Command: `/bananahub use info-diagram`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Fbananahub-skill&template_id=info-diagram
 - Template Source: https://github.com/bananahub-ai/bananahub-skill/tree/main/references/templates/info-diagram
-- Preview Image: https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/info-diagram/samples/sample-gpt-image-2-01.png
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/info-diagram/samples/sample-3.1-flash-01.png
 
 ### minimal-wallpaper
 - Title: Minimal Phone Wallpaper / 极简手机壁纸
@@ -232,7 +232,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Install Command: `bananahub add bananahub-ai/templates/minimal-wallpaper`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Ftemplates&template_id=minimal-wallpaper
 - Template Source: https://github.com/bananahub-ai/templates/tree/main/minimal-wallpaper
-- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/minimal-wallpaper/samples/sample-gpt-image-2-01.png
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/minimal-wallpaper/samples/sample-3.1-flash-01.png
 
 ### product-white-bg
 - Title: E-commerce Product Clean Shot / 电商白底产品图
@@ -251,7 +251,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Primary Command: `/bananahub use product-white-bg`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Fbananahub-skill&template_id=product-white-bg
 - Template Source: https://github.com/bananahub-ai/bananahub-skill/tree/main/references/templates/product-white-bg
-- Preview Image: https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/product-white-bg/samples/sample-gpt-image-2-01.png
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/product-white-bg/samples/sample-3.1-flash-01.png
 
 ### readme-launch-visual
 - Title: README Launch Visual Workflow / README 启动视觉工作流
@@ -271,7 +271,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Install Command: `bananahub add bananahub-ai/templates/readme-launch-visual`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Ftemplates&template_id=readme-launch-visual
 - Template Source: https://github.com/bananahub-ai/templates/tree/main/readme-launch-visual
-- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/readme-launch-visual/samples/sample-gpt-image-2-01.png
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/readme-launch-visual/samples/sample-3-pro-01.png
 
 ### repo-explainer-diagram
 - Title: Repository Explainer Diagram / 代码库讲解图
@@ -290,7 +290,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Primary Command: `/bananahub use repo-explainer-diagram`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Fbananahub-skill&template_id=repo-explainer-diagram
 - Template Source: https://github.com/bananahub-ai/bananahub-skill/tree/main/references/templates/repo-explainer-diagram
-- Preview Image: https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/repo-explainer-diagram/samples/sample-gpt-image-2-01.png
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/repo-explainer-diagram/samples/sample-3-pro-02.png
 
 ## Discovered Templates (2)
 
@@ -312,6 +312,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Install Command: `bananahub add zkywalker/nanobanana-artisan-portrait`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=zkywalker%2Fnanobanana-artisan-portrait&template_id=artisan-portrait
 - Template Source: https://github.com/zkywalker/nanobanana-artisan-portrait/tree/main
+- Preview Image: https://raw.githubusercontent.com/zkywalker/nanobanana-artisan-portrait/main/samples/sample-3-pro-01.png
 
 ### city-landmark-diorama
 - Title: City Landmark Diorama Workflow / 城市地标沙盘工作流
@@ -331,4 +332,5 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Install Command: `bananahub add zkywalker/nanobanana-city-landmark-diorama`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=zkywalker%2Fnanobanana-city-landmark-diorama&template_id=city-landmark-diorama
 - Template Source: https://github.com/zkywalker/nanobanana-city-landmark-diorama/tree/main
+- Preview Image: https://raw.githubusercontent.com/zkywalker/nanobanana-city-landmark-diorama/main/samples/sample-3-pro-01.png
 
