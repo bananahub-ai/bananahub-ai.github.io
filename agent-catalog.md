@@ -1,6 +1,6 @@
 # BananaHub Agent Catalog
 
-Generated: 2026-05-16T07:59:46.691Z
+Generated: 2026-05-17T08:17:38.596Z
 
 BananaHub is the installable template network for BananaHub Skill.
 Use `catalog.json` for structured access. This markdown file is a readable digest of the merged catalog.
@@ -74,6 +74,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Primary Command: `/bananahub use article-one-page-summary`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Fbananahub-skill&template_id=article-one-page-summary
 - Template Source: https://github.com/bananahub-ai/bananahub-skill/tree/main/references/templates/article-one-page-summary
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/article-one-page-summary/samples/sample-gpt-image-2-01.png
 
 ### asset-style-consistency-pack
 - Title: Local Asset Style Consistency Workflow / 本地素材风格统一工作流
@@ -112,6 +113,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Primary Command: `/bananahub use background-replace-edit`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Fbananahub-skill&template_id=background-replace-edit
 - Template Source: https://github.com/bananahub-ai/bananahub-skill/tree/main/references/templates/background-replace-edit
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/background-replace-edit/samples/sample-gpt-image-2-01.png
 
 ### consistent-character-storyboard
 - Title: Consistent Character Storyboard Workflow / 角色一致性分镜工作流
@@ -191,6 +193,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Install Command: `bananahub add bananahub-ai/templates/github-repo-visual-kit`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Ftemplates&template_id=github-repo-visual-kit
 - Template Source: https://github.com/bananahub-ai/templates/tree/main/github-repo-visual-kit
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/templates/main/github-repo-visual-kit/samples/sample-gpt-image-2-01.png
 
 ### info-diagram
 - Title: Practical Infographic One-Pager / 信息图一页卡
@@ -209,6 +212,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Primary Command: `/bananahub use info-diagram`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Fbananahub-skill&template_id=info-diagram
 - Template Source: https://github.com/bananahub-ai/bananahub-skill/tree/main/references/templates/info-diagram
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/info-diagram/samples/sample-3.1-flash-01.png
 
 ### minimal-wallpaper
 - Title: Minimal Phone Wallpaper / 极简手机壁纸
@@ -247,6 +251,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Primary Command: `/bananahub use product-white-bg`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Fbananahub-skill&template_id=product-white-bg
 - Template Source: https://github.com/bananahub-ai/bananahub-skill/tree/main/references/templates/product-white-bg
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/product-white-bg/samples/sample-3.1-flash-01.png
 
 ### readme-launch-visual
 - Title: README Launch Visual Workflow / README 启动视觉工作流
@@ -285,6 +290,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Primary Command: `/bananahub use repo-explainer-diagram`
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Fbananahub-skill&template_id=repo-explainer-diagram
 - Template Source: https://github.com/bananahub-ai/bananahub-skill/tree/main/references/templates/repo-explainer-diagram
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/repo-explainer-diagram/samples/sample-3-pro-02.png
 
 ## Discovered Templates (2)
 
