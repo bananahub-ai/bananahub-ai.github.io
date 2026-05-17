@@ -661,6 +661,11 @@ function buildSampleRecords(sampleEntries, repo, branch, templateDir) {
     if (!sampleFile) {
       return null;
     }
+    const sampleModel = canonicalModelId(sample.model);
+    const sampleLooksLikeGptImage2 = /gpt[-_.]?image[-_.]?2/i.test(sampleFile);
+    if (sampleModel !== 'gpt-image-2' && !sampleLooksLikeGptImage2) {
+      return null;
+    }
 
     const samplePath = joinRepoPath(templateDir, sampleFile);
     return {

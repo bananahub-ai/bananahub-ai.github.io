@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "catalog_type": "curated",
-  "generated": "2026-05-17T08:17:38.596Z",
+  "generated": "2026-05-17T10:13:04.601Z",
   "site": {
     "url": "https://bananahub.ai/",
     "hub_api_base": "https://worker.bananahub.ai/api",
@@ -142,25 +142,14 @@
         "default": "base",
         "gemini": "prompt-gemini"
       },
-      "recommended_provider": "google-ai-studio",
-      "recommended_model": "gemini-3-pro-image-preview",
+      "recommended_provider": "openai",
+      "recommended_model": "gpt-image-2",
       "model_priority": 0,
       "schema_version": 2,
       "aspect": "1:1",
       "difficulty": "intermediate",
       "description": "Guide the agent through building a usable app and web logo system: first lock the brand idea and the most restrictive platform constraints, then generate an icon-first mark, then derive web lockups and platform-safe variants without letting the concept drift.",
       "samples": [
-        {
-          "file": "samples/sample-3-pro-01.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3-pro-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "Create an icon-first logo system sample for BananaHub. Use one bold black peeled-banana symbol as the approved core mark, keep it centered and high-contrast on a warm off-white presentation board, and show two outputs from the same baseline: one square app-icon-safe symbol and one clean website lockup with the exact wordmark 'BananaHub'. Keep the palette monochrome, flat, and minimal. No gradients, no mascots, no extra copy beyond the locked brand name and short usage labels.",
-          "aspect": "1:1",
-          "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/app-web-logo-system/samples/sample-3-pro-01.png",
-          "page_url": "https://github.com/bananahub-ai/templates/blob/main/app-web-logo-system/samples/sample-3-pro-01.png"
-        },
         {
           "file": "samples/sample-gpt-image-2-01.png",
           "provider": "chatgpt-compatible",
@@ -173,8 +162,8 @@
           "page_url": "https://github.com/bananahub-ai/templates/blob/main/app-web-logo-system/samples/sample-gpt-image-2-01.png"
         }
       ],
-      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/app-web-logo-system/samples/sample-3-pro-01.png",
-      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/app-web-logo-system/samples/sample-3-pro-01.png",
+      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/app-web-logo-system/samples/sample-gpt-image-2-01.png",
+      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/app-web-logo-system/samples/sample-gpt-image-2-01.png",
       "repo": "bananahub-ai/templates",
       "repo_url": "https://github.com/bananahub-ai/templates",
       "branch": "main",
@@ -286,47 +275,14 @@
         "default": "base",
         "gemini": "prompt-gemini"
       },
-      "recommended_provider": "google-ai-studio",
-      "recommended_model": "gemini-3-pro-image-preview",
+      "recommended_provider": "openai",
+      "recommended_model": "gpt-image-2",
       "model_priority": 0,
       "schema_version": 2,
       "aspect": "16:9",
       "difficulty": "intermediate",
       "description": "Guide the agent through turning an article, tutorial, or one important paragraph into a compact illustration pack: read the source first, decide which sections deserve images, write a small outline, then generate visuals that clarify the article instead of decorating it.",
       "samples": [
-        {
-          "file": "samples/sample-3-pro-01.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3-pro-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "Create a clean article-support workflow diagram. Use only these verified facts as truth: the workflow starts by extracting verified claims from the article; it plans image slots before any generation; it generates one image at a time and reviews fidelity. Show exactly three grouped stages in a left-to-right reading order. The only text allowed anywhere in the image is: \\\"Extract claims\\\", \\\"Plan slots\\\", and \\\"Generate + review\\\". Do not add a title, caption, paragraph, badge, or any extra words. Use a restrained product-doc editorial aesthetic with warm paper-white background, ink-black linework, and muted banana-gold and teal accents. Keep the image text-light, high-contrast, and easy to understand in under ten seconds.",
-          "aspect": "16:9",
-          "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/article-illustration-workflow/samples/sample-3-pro-01.png",
-          "page_url": "https://github.com/bananahub-ai/templates/blob/main/article-illustration-workflow/samples/sample-3-pro-01.png"
-        },
-        {
-          "file": "samples/sample-3-pro-02.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3-pro-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "Create a compact article-support planning card. Use only these verified facts as truth: not every paragraph needs a picture; some sections want a flowchart; some need a framework card; some are better left text-only. Use a clean three-column comparison card with obvious visual separation. The only text allowed anywhere in the image is: \\\"Flowchart\\\", \\\"Framework card\\\", and \\\"Text only\\\". Do not add a title, caption, paragraph, badge, or any extra words. Use a restrained product-doc editorial aesthetic with warm paper-white background, ink-black linework, and muted banana-gold and teal accents. Keep the image text-light, high-contrast, and understandable in under ten seconds.",
-          "aspect": "4:3",
-          "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/article-illustration-workflow/samples/sample-3-pro-02.png",
-          "page_url": "https://github.com/bananahub-ai/templates/blob/main/article-illustration-workflow/samples/sample-3-pro-02.png"
-        },
-        {
-          "file": "samples/sample-3-pro-03.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3-pro-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "Create a scene-led editorial cover image for an article about planning illustrations. Use only these verified facts as truth: good article visuals should clarify the writing instead of distracting from it; the workflow reads the article first; image slots are decided later. Show a calm editorial desk scene with one printed article page as the focal object, a pencil, and three small unlabeled thumbnail frames placed nearby to suggest planning. No text anywhere in the image. Use a restrained warm editorial aesthetic with paper-white surfaces, ink-black details, and muted banana-gold and teal accents. Keep the composition clean, thoughtful, and suitable as a section cover rather than a technical diagram.",
-          "aspect": "3:4",
-          "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/article-illustration-workflow/samples/sample-3-pro-03.png",
-          "page_url": "https://github.com/bananahub-ai/templates/blob/main/article-illustration-workflow/samples/sample-3-pro-03.png"
-        },
         {
           "file": "samples/sample-gpt-image-2-01.png",
           "provider": "chatgpt-compatible",
@@ -339,8 +295,8 @@
           "page_url": "https://github.com/bananahub-ai/templates/blob/main/article-illustration-workflow/samples/sample-gpt-image-2-01.png"
         }
       ],
-      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/article-illustration-workflow/samples/sample-3-pro-01.png",
-      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/article-illustration-workflow/samples/sample-3-pro-01.png",
+      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/article-illustration-workflow/samples/sample-gpt-image-2-01.png",
+      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/article-illustration-workflow/samples/sample-gpt-image-2-01.png",
       "repo": "bananahub-ai/templates",
       "repo_url": "https://github.com/bananahub-ai/templates",
       "branch": "main",
@@ -450,8 +406,8 @@
         "default": "base",
         "gemini": "prompt-gemini"
       },
-      "recommended_provider": "google-ai-studio",
-      "recommended_model": "gemini-3-pro-image-preview",
+      "recommended_provider": "openai",
+      "recommended_model": "gpt-image-2",
       "model_priority": 0,
       "schema_version": 2,
       "aspect": "4:3",
@@ -580,36 +536,14 @@
         "default": "base",
         "gemini": "prompt-gemini"
       },
-      "recommended_provider": "google-ai-studio",
-      "recommended_model": "gemini-3-pro-image-preview",
+      "recommended_provider": "openai",
+      "recommended_model": "gpt-image-2",
       "model_priority": 0,
       "schema_version": 2,
       "aspect": "1:1",
       "difficulty": "advanced",
       "description": "Guide the agent through creating a consistent asset pack from local images: first lock one approved style anchor, then propagate the same style and constraints across additional assets without letting color, composition logic, or character identity drift.",
       "samples": [
-        {
-          "file": "samples/sample-3-pro-01.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3-pro-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "Keep the exact building layout, pool placement, fountain placement, trees, and overall camera angle unchanged. Transform this image into a clean architectural concept illustration with a restrained pastel palette, soft afternoon lighting, matte materials, and crisp presentation lines. Preserve the house geometry and outdoor elements while normalizing the whole scene into one polished visual family. Do not add new objects or change the composition.",
-          "aspect": "16:9",
-          "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/asset-style-consistency-pack/samples/sample-3-pro-01.png",
-          "page_url": "https://github.com/bananahub-ai/templates/blob/main/asset-style-consistency-pack/samples/sample-3-pro-01.png"
-        },
-        {
-          "file": "samples/sample-3-pro-02.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3-pro-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "Keep the exact building layout, pool placement, fountain placement, trees, and overall camera angle unchanged. Restyle this image into a premium dusk visualization with deep navy shadows, warm interior glow, reflective water, cleaner material separation, and polished architectural presentation. Preserve the house geometry and all outdoor elements while shifting the whole image into one coherent evening-render family. Do not add new objects or change the composition.",
-          "aspect": "16:9",
-          "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/asset-style-consistency-pack/samples/sample-3-pro-02.png",
-          "page_url": "https://github.com/bananahub-ai/templates/blob/main/asset-style-consistency-pack/samples/sample-3-pro-02.png"
-        },
         {
           "file": "samples/sample-gpt-image-2-01.png",
           "provider": "chatgpt-compatible",
@@ -622,8 +556,8 @@
           "page_url": "https://github.com/bananahub-ai/templates/blob/main/asset-style-consistency-pack/samples/sample-gpt-image-2-01.png"
         }
       ],
-      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/asset-style-consistency-pack/samples/sample-3-pro-01.png",
-      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/asset-style-consistency-pack/samples/sample-3-pro-01.png",
+      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/asset-style-consistency-pack/samples/sample-gpt-image-2-01.png",
+      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/asset-style-consistency-pack/samples/sample-gpt-image-2-01.png",
       "repo": "bananahub-ai/templates",
       "repo_url": "https://github.com/bananahub-ai/templates",
       "branch": "main",
@@ -732,8 +666,8 @@
         "default": "base",
         "gemini": "prompt-gemini"
       },
-      "recommended_provider": "google-ai-studio",
-      "recommended_model": "gemini-3-pro-image-preview",
+      "recommended_provider": "openai",
+      "recommended_model": "gpt-image-2",
       "model_priority": 0,
       "schema_version": 2,
       "aspect": "source",
@@ -803,7 +737,7 @@
         },
         {
           "name": "gpt-image-2",
-          "tested": false,
+          "tested": true,
           "quality": "best"
         },
         {
@@ -861,8 +795,8 @@
         "default": "base",
         "gemini": "prompt-gemini"
       },
-      "recommended_provider": "google-ai-studio",
-      "recommended_model": "gemini-3-pro-image-preview",
+      "recommended_provider": "openai",
+      "recommended_model": "gpt-image-2",
       "model_priority": 0,
       "schema_version": 2,
       "aspect": "1:1",
@@ -870,19 +804,19 @@
       "description": "Guide the agent through a repeatable storyboard exploration workflow: first lock a master character reference, then explore multi-shot boards, then iterate with single-variable edits so the character stays consistent across frames without overcommitting too early to a final story layout.",
       "samples": [
         {
-          "file": "samples/sample-3-pro-01.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3-pro-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "Using the provided reference image of Miso, create a 3x3 contact sheet. All 9 cells must show the same Siamese cat character, the same teal neck scarf with a small gold bell, the same soft pastel interior environment, and the same warm daylight lighting. Each cell should use a different natural pose or camera angle while keeping facial structure, fur pattern, blue eyes, proportions, palette, and background continuity stable across the grid. Avoid duplicate frames. Keep the tone cute, clean, and IP-friendly.",
+          "file": "samples/sample-gpt-image-2-01.png",
+          "provider": "chatgpt-compatible",
+          "model": "gpt-image-2",
+          "prompt_variant": "gpt-image",
+          "prompt": "Create a square 3x3 storyboard contact sheet for one original friendly explorer character. Same character in every panel: short dark hair, teal jacket, small gold scarf pin, warm studio light. Nine different poses and camera angles. Clean concept art board, thin panel borders, off-white background. No text, no real person, no copyrighted character, no watermark.",
           "aspect": "1:1",
           "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/consistent-character-storyboard/samples/sample-3-pro-01.png",
-          "page_url": "https://github.com/bananahub-ai/templates/blob/main/consistent-character-storyboard/samples/sample-3-pro-01.png"
+          "image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/consistent-character-storyboard/samples/sample-gpt-image-2-01.png",
+          "page_url": "https://github.com/bananahub-ai/templates/blob/main/consistent-character-storyboard/samples/sample-gpt-image-2-01.png"
         }
       ],
-      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/consistent-character-storyboard/samples/sample-3-pro-01.png",
-      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/consistent-character-storyboard/samples/sample-3-pro-01.png",
+      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/consistent-character-storyboard/samples/sample-gpt-image-2-01.png",
+      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/consistent-character-storyboard/samples/sample-gpt-image-2-01.png",
       "repo": "bananahub-ai/templates",
       "repo_url": "https://github.com/bananahub-ai/templates",
       "branch": "main",
@@ -900,7 +834,7 @@
       "install_required": true,
       "usage_stats_url": "https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Ftemplates&template_id=consistent-character-storyboard",
       "created": "2026-03-31",
-      "updated": "2026-04-29",
+      "updated": "2026-05-17",
       "pinned": false,
       "pinned_rank": null,
       "featured": false,
@@ -994,25 +928,14 @@
         "default": "base",
         "gemini": "prompt-gemini"
       },
-      "recommended_provider": "google-ai-studio",
-      "recommended_model": "gemini-3-pro-image-preview",
+      "recommended_provider": "openai",
+      "recommended_model": "gpt-image-2",
       "model_priority": 0,
       "schema_version": 2,
       "aspect": "1:1",
       "difficulty": "beginner",
       "description": "生成 Q 版可爱贴纸/表情包。大头小身、表情夸张、白色背景带描边，适合微信/Telegram 表情包或社交媒体贴纸。",
       "samples": [
-        {
-          "file": "samples/sample-3.1-flash-01.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3.1-flash-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "A cute chibi sticker of a round fluffy cat, happy and excited with oversized sparkly eyes and a wide open smile, waving both paws enthusiastically. Kawaii anime style with bold black outline, flat cel-shaded colors, and clean white background. Super deformed proportions with an oversized head (head-to-body ratio 1:1), die-cut sticker-ready composition, simple rounded shapes, vibrant pastel-accented colors.",
-          "aspect": "1:1",
-          "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/cute-sticker/samples/sample-3.1-flash-01.png",
-          "page_url": "https://github.com/bananahub-ai/templates/blob/main/cute-sticker/samples/sample-3.1-flash-01.png"
-        },
         {
           "file": "samples/sample-gpt-image-2-01.png",
           "provider": "chatgpt-compatible",
@@ -1025,8 +948,8 @@
           "page_url": "https://github.com/bananahub-ai/templates/blob/main/cute-sticker/samples/sample-gpt-image-2-01.png"
         }
       ],
-      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/cute-sticker/samples/sample-3.1-flash-01.png",
-      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/cute-sticker/samples/sample-3.1-flash-01.png",
+      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/cute-sticker/samples/sample-gpt-image-2-01.png",
+      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/cute-sticker/samples/sample-gpt-image-2-01.png",
       "repo": "bananahub-ai/templates",
       "repo_url": "https://github.com/bananahub-ai/templates",
       "branch": "main",
@@ -1138,25 +1061,14 @@
         "default": "base",
         "gemini": "prompt-gemini"
       },
-      "recommended_provider": "google-ai-studio",
-      "recommended_model": "gemini-3-pro-image-preview",
+      "recommended_provider": "openai",
+      "recommended_model": "gpt-image-2",
       "model_priority": 0,
       "schema_version": 2,
       "aspect": "16:9",
       "difficulty": "beginner",
       "description": "一键生成赛博朋克风格的城市夜景。霓虹灯光、雨水反射、未来感建筑，适合用作桌面壁纸、概念设定、社交媒体封面。",
       "samples": [
-        {
-          "file": "samples/sample-3.1-flash-01.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3.1-flash-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "A photorealistic wide-angle shot of a cyberpunk city street at night. A rain-soaked narrow alley lined with storefronts, holographic advertisements floating above the shops and flickering neon signage in the distance. The scene is bathed in pink and cyan neon light reflecting off the wet pavement and puddles. Dense fog drifts through the alley with volumetric light rays piercing through from above, creating visible shafts of colored light. Captured with a 35mm wide-angle lens, deep focus keeping both the foreground puddles and distant buildings sharp. Cinematic composition with leading lines drawing the eye into the depth of the street.",
-          "aspect": "16:9",
-          "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/cyberpunk-city/samples/sample-3.1-flash-01.png",
-          "page_url": "https://github.com/bananahub-ai/templates/blob/main/cyberpunk-city/samples/sample-3.1-flash-01.png"
-        },
         {
           "file": "samples/sample-gpt-image-2-01.png",
           "provider": "chatgpt-compatible",
@@ -1169,8 +1081,8 @@
           "page_url": "https://github.com/bananahub-ai/templates/blob/main/cyberpunk-city/samples/sample-gpt-image-2-01.png"
         }
       ],
-      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/cyberpunk-city/samples/sample-3.1-flash-01.png",
-      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/cyberpunk-city/samples/sample-3.1-flash-01.png",
+      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/cyberpunk-city/samples/sample-gpt-image-2-01.png",
+      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/cyberpunk-city/samples/sample-gpt-image-2-01.png",
       "repo": "bananahub-ai/templates",
       "repo_url": "https://github.com/bananahub-ai/templates",
       "branch": "main",
@@ -1281,9 +1193,9 @@
         "default": "base",
         "gemini": "prompt-gemini"
       },
-      "recommended_provider": "google-ai-studio",
-      "recommended_model": "gemini-3-pro-image-preview",
-      "model_priority": 1,
+      "recommended_provider": "openai",
+      "recommended_model": "gpt-image-2",
+      "model_priority": 0,
       "schema_version": 2,
       "aspect": "16:9",
       "difficulty": "intermediate",
@@ -1358,7 +1270,7 @@
         },
         {
           "name": "gpt-image-2",
-          "tested": false,
+          "tested": true,
           "quality": "best"
         }
       ],
@@ -1411,8 +1323,8 @@
         "default": "base",
         "gemini": "prompt-gemini"
       },
-      "recommended_provider": "google-ai-studio",
-      "recommended_model": "gemini-3-pro-image-preview",
+      "recommended_provider": "openai",
+      "recommended_model": "gpt-image-2",
       "model_priority": 0,
       "schema_version": 2,
       "aspect": "4:3",
@@ -1420,19 +1332,19 @@
       "description": "生成稳定、实用的信息图一页卡。适合流程说明、概念拆解、对比图、时间线和教程摘要。目标不是炫技，而是让读者 10 秒内看懂结构。",
       "samples": [
         {
-          "file": "samples/sample-3.1-flash-01.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3.1-flash-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "Create a tall infographic titled \\\"How Coffee Is Made: Bean to Cup\\\". Use exactly five stacked steps with these labels: \\\"Harvest\\\", \\\"Roast\\\", \\\"Grind\\\", \\\"Brew\\\", \\\"Serve\\\". Use warm coffee colors, simple icons, rounded cards, and clear arrows. Keep the layout readable and do not add extra steps.",
+          "file": "samples/sample-gpt-image-2-01.png",
+          "provider": "chatgpt-compatible",
+          "model": "gpt-image-2",
+          "prompt_variant": "gpt-image",
+          "prompt": "Clean infographic card. Four rounded boxes left to right with arrows. Only text: \\\"Plan\\\", \\\"Build\\\", \\\"Test\\\", \\\"Ship\\\". Off-white background, teal and gold accents, simple icons, large readable labels. No other text, no watermark.",
           "aspect": "4:3",
           "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/info-diagram/samples/sample-3.1-flash-01.png",
-          "page_url": "https://github.com/bananahub-ai/bananahub-skill/blob/main/references/templates/info-diagram/samples/sample-3.1-flash-01.png"
+          "image": "https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/info-diagram/samples/sample-gpt-image-2-01.png",
+          "page_url": "https://github.com/bananahub-ai/bananahub-skill/blob/main/references/templates/info-diagram/samples/sample-gpt-image-2-01.png"
         }
       ],
-      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/info-diagram/samples/sample-3.1-flash-01.png",
-      "sample_image_page_url": "https://github.com/bananahub-ai/bananahub-skill/blob/main/references/templates/info-diagram/samples/sample-3.1-flash-01.png",
+      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/info-diagram/samples/sample-gpt-image-2-01.png",
+      "sample_image_page_url": "https://github.com/bananahub-ai/bananahub-skill/blob/main/references/templates/info-diagram/samples/sample-gpt-image-2-01.png",
       "repo": "bananahub-ai/bananahub-skill",
       "repo_url": "https://github.com/bananahub-ai/bananahub-skill",
       "branch": "main",
@@ -1450,7 +1362,7 @@
       "install_required": false,
       "usage_stats_url": "https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Fbananahub-skill&template_id=info-diagram",
       "created": "2026-03-24",
-      "updated": "2026-05-16",
+      "updated": "2026-05-17",
       "pinned": false,
       "pinned_rank": null,
       "featured": false,
@@ -1544,25 +1456,14 @@
         "default": "base",
         "gemini": "prompt-gemini"
       },
-      "recommended_provider": "google-ai-studio",
-      "recommended_model": "gemini-3-pro-image-preview",
+      "recommended_provider": "openai",
+      "recommended_model": "gpt-image-2",
       "model_priority": 0,
       "schema_version": 2,
       "aspect": "9:16",
       "difficulty": "beginner",
       "description": "生成极简风格手机壁纸。大面积留白、单一主体、克制的配色，适合 iPhone/Android 锁屏和主屏壁纸。",
       "samples": [
-        {
-          "file": "samples/sample-3.1-flash-01.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3.1-flash-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "A minimalist phone wallpaper featuring a single small paper boat centered in the lower third of the frame with vast empty space above. Soft cream background with a muted blue accent on the subject. Clean vector illustration with subtle grain texture and crisp edges. Expansive negative space occupying most of the image, serene and contemplative mood.",
-          "aspect": "9:16",
-          "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/minimal-wallpaper/samples/sample-3.1-flash-01.png",
-          "page_url": "https://github.com/bananahub-ai/templates/blob/main/minimal-wallpaper/samples/sample-3.1-flash-01.png"
-        },
         {
           "file": "samples/sample-gpt-image-2-01.png",
           "provider": "chatgpt-compatible",
@@ -1575,8 +1476,8 @@
           "page_url": "https://github.com/bananahub-ai/templates/blob/main/minimal-wallpaper/samples/sample-gpt-image-2-01.png"
         }
       ],
-      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/minimal-wallpaper/samples/sample-3.1-flash-01.png",
-      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/minimal-wallpaper/samples/sample-3.1-flash-01.png",
+      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/minimal-wallpaper/samples/sample-gpt-image-2-01.png",
+      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/minimal-wallpaper/samples/sample-gpt-image-2-01.png",
       "repo": "bananahub-ai/templates",
       "repo_url": "https://github.com/bananahub-ai/templates",
       "branch": "main",
@@ -1685,25 +1586,14 @@
         "default": "base",
         "gemini": "prompt-gemini"
       },
-      "recommended_provider": "google-ai-studio",
-      "recommended_model": "gemini-3-pro-image-preview",
+      "recommended_provider": "openai",
+      "recommended_model": "gpt-image-2",
       "model_priority": 0,
       "schema_version": 2,
       "aspect": "1:1",
       "difficulty": "beginner",
       "description": "生成电商平台常用的白底产品图。重点是主体干净、材质可信、边缘完整、投影自然，适合主图、目录图、详情页首屏和内部选品物料。",
       "samples": [
-        {
-          "file": "samples/sample-3.1-flash-01.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3.1-flash-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "Create a clean studio catalog product image of black over-ear headphones. Show the product centered on a pure white background with a small natural contact shadow. Use soft studio lighting, crisp edges, accurate matte and leather material texture, and realistic scale. No props, people, badges, watermarks, or extra text.",
-          "aspect": "1:1",
-          "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/product-white-bg/samples/sample-3.1-flash-01.png",
-          "page_url": "https://github.com/bananahub-ai/bananahub-skill/blob/main/references/templates/product-white-bg/samples/sample-3.1-flash-01.png"
-        },
         {
           "file": "samples/sample-gpt-image-2-01.png",
           "provider": "chatgpt-compatible",
@@ -1716,8 +1606,8 @@
           "page_url": "https://github.com/bananahub-ai/bananahub-skill/blob/main/references/templates/product-white-bg/samples/sample-gpt-image-2-01.png"
         }
       ],
-      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/product-white-bg/samples/sample-3.1-flash-01.png",
-      "sample_image_page_url": "https://github.com/bananahub-ai/bananahub-skill/blob/main/references/templates/product-white-bg/samples/sample-3.1-flash-01.png",
+      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/product-white-bg/samples/sample-gpt-image-2-01.png",
+      "sample_image_page_url": "https://github.com/bananahub-ai/bananahub-skill/blob/main/references/templates/product-white-bg/samples/sample-gpt-image-2-01.png",
       "repo": "bananahub-ai/bananahub-skill",
       "repo_url": "https://github.com/bananahub-ai/bananahub-skill",
       "branch": "main",
@@ -1827,36 +1717,14 @@
         "default": "base",
         "gemini": "prompt-gemini"
       },
-      "recommended_provider": "google-ai-studio",
-      "recommended_model": "gemini-3-pro-image-preview",
+      "recommended_provider": "openai",
+      "recommended_model": "gpt-image-2",
       "model_priority": 0,
       "schema_version": 2,
       "aspect": "16:9",
       "difficulty": "intermediate",
       "description": "Guide the agent through converting README or positioning text into one launch-ready visual with locked copy, a clear headline hierarchy, and a visual metaphor that matches the actual product instead of generic AI poster aesthetics.",
       "samples": [
-        {
-          "file": "samples/sample-3-pro-01.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3-pro-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "Create a launch visual for BananaHub. Use the exact headline 'Agent-native image workflows' as the dominant text. Add the supporting line 'Prompt optimization, templates, and editing in one flow' in a smaller secondary position. The asset target is a homepage hero banner. Use a bold terminal-meets-product-doc composition with layered prompt cards flowing into generated image frames. Keep the design high-contrast, clean, and readable at a glance. Use a modern editorial product aesthetic with warm banana gold, ink black, and paper white. Do not invent extra UI labels or filler marketing copy.",
-          "aspect": "16:9",
-          "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/readme-launch-visual/samples/sample-3-pro-01.png",
-          "page_url": "https://github.com/bananahub-ai/templates/blob/main/readme-launch-visual/samples/sample-3-pro-01.png"
-        },
-        {
-          "file": "samples/sample-3-pro-02.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3-pro-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "Create an OG cover image for BananaHub. Keep the exact headline 'Build image workflows, not prompt piles'. Use minimal supporting text: 'Templates, editing, and iterative guidance for Gemini images'. Composition should be optimized for a wide social card, with clear breathing room around the text and one memorable visual metaphor based on modular prompt cards snapping into a guided workflow. Strong hierarchy, strong contrast, no clutter. Use a clean editorial product aesthetic with banana gold accents, black typography, and subtle paper texture.",
-          "aspect": "16:9",
-          "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/readme-launch-visual/samples/sample-3-pro-02.png",
-          "page_url": "https://github.com/bananahub-ai/templates/blob/main/readme-launch-visual/samples/sample-3-pro-02.png"
-        },
         {
           "file": "samples/sample-gpt-image-2-01.png",
           "provider": "chatgpt-compatible",
@@ -1869,8 +1737,8 @@
           "page_url": "https://github.com/bananahub-ai/templates/blob/main/readme-launch-visual/samples/sample-gpt-image-2-01.png"
         }
       ],
-      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/readme-launch-visual/samples/sample-3-pro-01.png",
-      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/readme-launch-visual/samples/sample-3-pro-01.png",
+      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/templates/main/readme-launch-visual/samples/sample-gpt-image-2-01.png",
+      "sample_image_page_url": "https://github.com/bananahub-ai/templates/blob/main/readme-launch-visual/samples/sample-gpt-image-2-01.png",
       "repo": "bananahub-ai/templates",
       "repo_url": "https://github.com/bananahub-ai/templates",
       "branch": "main",
@@ -1980,25 +1848,14 @@
         "default": "base",
         "gemini": "prompt-gemini"
       },
-      "recommended_provider": "google-ai-studio",
-      "recommended_model": "gemini-3-pro-image-preview",
-      "model_priority": 1,
+      "recommended_provider": "openai",
+      "recommended_model": "gpt-image-2",
+      "model_priority": 0,
       "schema_version": 2,
       "aspect": "4:3",
       "difficulty": "intermediate",
       "description": "Turn real repository context into one clear visual: project map, architecture diagram, request flow, setup flow, or contributor onboarding card. Accuracy beats decoration.",
       "samples": [
-        {
-          "file": "samples/sample-3-pro-02.png",
-          "provider": "google-ai-studio",
-          "model": "gemini-3-pro-image-preview",
-          "prompt_variant": "gemini",
-          "prompt": "Create a clean repository workflow diagram titled \\\"Nano Banana Template Flow\\\". Use a top-to-bottom flow with the exact labels \\\"User Request\\\", \\\"Prompt Optimization\\\", \\\"Profile Match\\\", \\\"Template Suggestion\\\", and \\\"Generate or Edit\\\". Use simple connectors, high contrast, restrained teal and gold colors, and no extra paragraphs.",
-          "aspect": "4:3",
-          "size": "",
-          "image": "https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/repo-explainer-diagram/samples/sample-3-pro-02.png",
-          "page_url": "https://github.com/bananahub-ai/bananahub-skill/blob/main/references/templates/repo-explainer-diagram/samples/sample-3-pro-02.png"
-        },
         {
           "file": "samples/sample-gpt-image-2-01.png",
           "provider": "chatgpt-compatible",
@@ -2011,8 +1868,8 @@
           "page_url": "https://github.com/bananahub-ai/bananahub-skill/blob/main/references/templates/repo-explainer-diagram/samples/sample-gpt-image-2-01.png"
         }
       ],
-      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/repo-explainer-diagram/samples/sample-3-pro-02.png",
-      "sample_image_page_url": "https://github.com/bananahub-ai/bananahub-skill/blob/main/references/templates/repo-explainer-diagram/samples/sample-3-pro-02.png",
+      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/repo-explainer-diagram/samples/sample-gpt-image-2-01.png",
+      "sample_image_page_url": "https://github.com/bananahub-ai/bananahub-skill/blob/main/references/templates/repo-explainer-diagram/samples/sample-gpt-image-2-01.png",
       "repo": "bananahub-ai/bananahub-skill",
       "repo_url": "https://github.com/bananahub-ai/bananahub-skill",
       "branch": "main",
