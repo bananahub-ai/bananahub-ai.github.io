@@ -1,6 +1,6 @@
 # BananaHub Agent Catalog
 
-Generated: 2026-07-31T08:44:08.403Z
+Generated: 2026-08-01T08:14:09.222Z
 
 BananaHub is the installable template network for BananaHub Skill.
 Use `catalog.json` for structured access. This markdown file is a readable digest of the merged catalog.
