@@ -26,6 +26,7 @@ The goal is not to create one giant prompt dump. The goal is to keep the base wo
 - `agent-catalog.md` — markdown digest of the current catalog
 
 Hand-maintained display metadata lives in `support-metadata.json` for provider/model names, marks, colors, and future logo asset paths.
+The gallery groups `openai-compatible` and `chatgpt-compatible` under the OpenAI display label, including `gpt-image-2.5-flare`. Cards, detail groups and provider filters share this mapping. Raw catalog provider IDs and sample evidence remain unchanged for execution and provenance; a display label is not verification of the underlying model or official endpoint.
 - `robots.txt` — crawler policy with sitemap reference
 - `sitemap.xml` — sitemap for the site and machine-readable files
 

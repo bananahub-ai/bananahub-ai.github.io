@@ -6,6 +6,7 @@ import {
   sortTemplates,
   searchTemplates,
   getTemplateProviderIds,
+  getDisplayProviderId,
   getTemplateModelIds
 } from './catalog.js';
 import { fetchAllStats, getTemplateKey } from './api.js';
@@ -401,7 +402,7 @@ function readUrlState() {
   const source = params.get('source');
   const profile = params.get('profile');
   const difficulty = params.get('difficulty');
-  const provider = params.get('provider');
+  const provider = getDisplayProviderId(params.get('provider'));
   const sort = params.get('sort');
   const query = params.get('q');
 
@@ -794,7 +795,7 @@ function renderSupportSummary(template, options = {}) {
   const models = extractModelIds(template);
   const providers = extractProviderIds(template);
   const recommendedModel = String(template.recommended_model || '').trim();
-  const recommendedProvider = String(template.recommended_provider || '').trim();
+  const recommendedProvider = getDisplayProviderId(template.recommended_provider);
   if (!recommendedModel && !models.length && !providers.length) {
     return '';
   }
@@ -934,20 +935,16 @@ function renderProviderModelChip(model, providerId, recommendedProvider, recomme
 }
 
 function getProviderSupportGroups(template) {
-  return (template.providers || [])
-    .map((provider) => {
-      if (typeof provider === 'string') {
-        return { id: provider, models: [] };
-      }
-
-      const id = String(provider?.id || '').trim();
-      const models = getUniqueItems(
-        (provider?.models || []).map((model) => (model?.id || model?.name || ''))
-      );
-
-      return id || models.length ? { id, models } : null;
-    })
-    .filter(Boolean);
+  const groups = new Map();
+  for (const provider of template.providers || []) {
+    const id = getDisplayProviderId(typeof provider === 'string' ? provider : provider?.id);
+    const models = (provider?.models || []).map((model) => model?.id || model?.name || '');
+    if (!id && !models.length) continue;
+    const group = groups.get(id) || { id, models: [] };
+    group.models = getUniqueItems([...group.models, ...models]);
+    groups.set(id, group);
+  }
+  return [...groups.values()];
 }
 
 function renderSupportGroup(key, items) {
@@ -969,7 +966,7 @@ function formatSupportItem(key, item) {
 }
 
 function formatProviderLabel(providerId, options = {}) {
-  const providerKey = String(providerId || '').trim();
+  const providerKey = getDisplayProviderId(providerId);
   if (!providerKey) {
     return t('common.value.notDeclared');
   }
@@ -980,7 +977,7 @@ function formatProviderLabel(providerId, options = {}) {
 }
 
 function getProviderMeta(providerId) {
-  return supportMetadata?.providers?.[providerId] || {};
+  return supportMetadata?.providers?.[getDisplayProviderId(providerId)] || {};
 }
 
 function getModelMeta(modelId) {

@@ -35,9 +35,14 @@ export function getTemplates() {
   return catalog ? catalog.templates : [];
 }
 
+export function getDisplayProviderId(providerId) {
+  const id = String(providerId || '').trim();
+  return ['openai-compatible', 'chatgpt-compatible'].includes(id) ? 'openai' : id;
+}
+
 export function getTemplateProviderIds(template) {
   return uniqueItems((template.providers || []).map((provider) => (
-    typeof provider === 'string' ? provider : provider?.id
+    getDisplayProviderId(typeof provider === 'string' ? provider : provider?.id)
   )));
 }
 
@@ -69,7 +74,7 @@ export function filterTemplates(templates, filters) {
     if (filters.difficulty && filters.difficulty !== 'all' && template.difficulty !== filters.difficulty) {
       return false;
     }
-    if (filters.provider && filters.provider !== 'all' && !getTemplateProviderIds(template).includes(filters.provider)) {
+    if (filters.provider && filters.provider !== 'all' && !getTemplateProviderIds(template).includes(getDisplayProviderId(filters.provider))) {
       return false;
     }
     return true;

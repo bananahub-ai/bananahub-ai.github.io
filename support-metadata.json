@@ -37,27 +37,23 @@
         "mark": "AI",
         "src": ""
       }
-    },
-    "chatgpt-compatible": {
-      "name": {
-        "en": "ChatGPT-compatible",
-        "zh-CN": "ChatGPT 兼容"
-      },
-      "short_name": {
-        "en": "ChatGPT",
-        "zh-CN": "ChatGPT"
-      },
-      "family": "openai-compatible",
-      "homepage": "",
-      "accent": "#1c211c",
-      "logo": {
-        "type": "text",
-        "mark": "GPT",
-        "src": ""
-      }
     }
   },
   "models": {
+    "gpt-image-2.5-flare": {
+      "name": {
+        "en": "GPT Image 2.5 Flare",
+        "zh-CN": "GPT Image 2.5 Flare"
+      },
+      "provider": "openai",
+      "family": "gpt-image",
+      "accent": "#10a37f",
+      "logo": {
+        "type": "text",
+        "mark": "AI",
+        "src": ""
+      }
+    },
     "gemini-3-pro-image-preview": {
       "name": {
         "en": "Gemini 3 Pro Image Preview",
