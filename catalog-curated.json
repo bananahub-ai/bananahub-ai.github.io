@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "catalog_type": "curated",
-  "generated": "2026-09-26T10:45:34.798Z",
+  "generated": "2026-09-26T14:14:48.731Z",
   "site": {
     "url": "https://bananahub.ai/",
     "hub_api_base": "https://worker.bananahub.ai/api",
@@ -14,27 +14,29 @@
     "agent_catalog": "https://bananahub.ai/agent-catalog.md"
   },
   "summary": {
-    "template_count": 14,
-    "profile_count": 7,
-    "official_count": 14,
+    "template_count": 15,
+    "profile_count": 8,
+    "official_count": 15,
     "featured_count": 0,
     "pinned_count": 0,
     "bundled_count": 5,
-    "remote_count": 9,
-    "curated_count": 14,
+    "remote_count": 10,
+    "curated_count": 15,
     "discovered_count": 0,
     "repos": [
+      "bananahub-ai/anime-game-wallpaper-kit",
       "bananahub-ai/bananahub-skill",
       "bananahub-ai/templates"
     ]
   },
   "layers": {
     "curated": {
-      "template_count": 14,
-      "official_count": 14,
+      "template_count": 15,
+      "official_count": 15,
       "bundled_count": 5,
-      "remote_count": 9,
+      "remote_count": 10,
       "repos": [
+        "bananahub-ai/anime-game-wallpaper-kit",
         "bananahub-ai/bananahub-skill",
         "bananahub-ai/templates"
       ]
@@ -50,6 +52,7 @@
   "profiles": [
     "diagram",
     "general",
+    "illustration",
     "minimal",
     "photo",
     "product",
@@ -772,6 +775,162 @@
       "usage_stats_url": "https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Fbananahub-skill&template_id=background-replace-edit",
       "created": "2026-04-29",
       "updated": "2026-05-16",
+      "pinned": false,
+      "pinned_rank": null,
+      "featured": false,
+      "featured_label": "",
+      "featured_note": ""
+    },
+    {
+      "id": "clean-anime-wallpaper",
+      "type": "prompt",
+      "title": "清爽大色块动漫游戏壁纸",
+      "title_en": "Clean Color-Mass Anime and Game Wallpaper",
+      "author": "bananahub",
+      "license": "CC-BY-4.0",
+      "version": "1.0.0",
+      "profile": "illustration",
+      "tags": [
+        "壁纸",
+        "动漫",
+        "游戏",
+        "二次元",
+        "大色块",
+        "电脑壁纸",
+        "手机壁纸",
+        "anime",
+        "wallpaper"
+      ],
+      "models": [
+        {
+          "name": "gpt-image-2.5-flare",
+          "tested": true,
+          "quality": "good"
+        },
+        {
+          "name": "gpt-image-2",
+          "tested": false,
+          "quality": "untested"
+        },
+        {
+          "name": "gemini-3-pro-image",
+          "tested": false,
+          "quality": "untested"
+        }
+      ],
+      "providers": [
+        {
+          "id": "openai-compatible",
+          "family": "unknown-openai-compatible",
+          "models": [
+            {
+              "id": "gpt-image-2.5-flare",
+              "tested": true,
+              "quality": "good",
+              "sample_evidence": [
+                "samples/sample-gpt-image-2.5-flare-01.png",
+                "samples/sample-gpt-image-2.5-flare-02.png",
+                "samples/sample-gpt-image-2.5-flare-03.png"
+              ],
+              "prompt_variant": "base"
+            }
+          ]
+        },
+        {
+          "id": "openai",
+          "family": "gpt-image",
+          "models": [
+            {
+              "id": "gpt-image-2",
+              "tested": false,
+              "quality": "untested",
+              "sample_evidence": [],
+              "prompt_variant": "base"
+            }
+          ]
+        },
+        {
+          "id": "google-ai-studio",
+          "family": "gemini-image",
+          "models": [
+            {
+              "id": "gemini-3-pro-image",
+              "tested": false,
+              "quality": "untested",
+              "sample_evidence": [],
+              "prompt_variant": "base"
+            }
+          ]
+        }
+      ],
+      "capabilities": {
+        "generation": true,
+        "edit": false,
+        "mask_edit": false
+      },
+      "prompt_variants": {},
+      "recommended_provider": "openai-compatible",
+      "recommended_model": "gpt-image-2.5-flare",
+      "model_priority": 9,
+      "schema_version": 2,
+      "aspect": "16:9",
+      "difficulty": "beginner",
+      "description": "适合动漫角色、游戏角色和二次元场景的清爽壁纸。重点不是把主体缩成一个小图标，也不是把背景虚化，而是用较少的大色块组织构图，把有限的细节留给角色辨识和视觉焦点。 从用户原始提示词发展而来，完整保留其英文视觉约束。默认不添加标题、台词、装饰颗粒或海报元素。只填主体即可使用；配色、场景和画幅按需调整。",
+      "samples": [
+        {
+          "file": "samples/sample-gpt-image-2.5-flare-01.png",
+          "provider": "openai-compatible",
+          "model": "gpt-image-2.5-flare",
+          "prompt_variant": "base",
+          "prompt": "生成一张构图和色彩非常干净的16:9 横屏电脑壁纸，壁纸的主要内容是《孤独摇滚！》的后藤一里（Bocchi），长粉色头发，一侧佩戴蓝色与黄色方块发饰，蓝色眼睛，穿粉色运动外套和深色裙子，坐在画面右下方的一段简洁台阶上，把黑色电吉他自然抱在身前，神情有一点害羞但很放松；保留吉他琴颈和完整的主要外形，不出现其他人物。\\n场景与情绪：午后安静的街角，以一整片浅暖色墙面和两三级宽阔台阶构成环境，一块斜向的大阴影带来节奏，背景不画店招、砖缝或杂物；左侧保留完整、舒展的安静区域。\\n配色方向：以低饱和杏白、浅珊瑚粉、柔和的灰紫阴影组织大色块，粉发与粉色运动服保持可区分，黑色吉他作为小面积视觉支点，发饰保留蓝黄固有色，不添加耀眼的金属反光。\\n\\n以清晰的二次元插画造型表达主体。保留角色的标志性轮廓、发型、服装、道具与必要的面部特征；不要为了简化而画错角色，也不要无关地增加角色、装饰或复杂场景。主色块尽量组织为 3–5 组，不把必要的角色固有色机械删掉。\\n\\nlarge simple color masses, low visual frequency, restrained edge density, clear edge hierarchy, minimal internal contour lines, broad shadow shapes, suppress micro-texture and micro-contrast, no unnecessary specular highlights\\n\\n把最清楚的边缘和少量细节留给面部、主体外轮廓与关键道具，衣褶和环境内部线条适度合并；阴影形成宽阔、连贯的形状，背景边缘更少、更弱。画面保持清晰，不用失焦、雾化、过曝或低清晰度模拟简洁；角色也不要退化成图标或无特征的剪影。\\n\\n根据实际画幅重新组织构图，而不是把同一构图强行裁切或拉伸。横屏电脑壁纸：主体偏右或右下，左侧约三分之一至五分之二保持低对比度、低细节，便于放桌面图标。竖屏手机壁纸：主体置于中下部，上方约三分之一保持低细节，避开时钟区域，底部留一点呼吸空间。留白应自然融入环境，不画占位框、设备边框、时钟或应用图标。脸和关键道具不要贴边或被裁断。\\n\\n除非用户明确要求，不添加文字、标题、字幕、标志、水印、拼贴边框、密集粒子、细碎纹理、发丝堆叠、闪亮高光或复杂背景。",
+          "aspect": "16:9",
+          "size": "1680x945",
+          "image": "https://raw.githubusercontent.com/bananahub-ai/anime-game-wallpaper-kit/main/samples/sample-gpt-image-2.5-flare-01.png",
+          "page_url": "https://github.com/bananahub-ai/anime-game-wallpaper-kit/blob/main/samples/sample-gpt-image-2.5-flare-01.png"
+        },
+        {
+          "file": "samples/sample-gpt-image-2.5-flare-02.png",
+          "provider": "openai-compatible",
+          "model": "gpt-image-2.5-flare",
+          "prompt_variant": "base",
+          "prompt": "生成一张构图和色彩非常干净的9:16 竖屏手机壁纸，壁纸的主要内容是哆啦A梦，经典圆润的蓝色机器人猫，白色脸部和腹部、红色圆鼻子、两侧必要的胡须、红色项圈和黄色铃铛，肚子上有清晰的半圆口袋；完整站在画面中下部，稍微抬起一只圆手，朝观看者温和地微笑，保持原作的经典比例，不出现其他人物或额外道具。\\n场景与情绪：安静明亮的开阔空间，奶油白天空是一整片低细节背景，底部只有一道舒缓的浅蓝地面色块和一块宽阔、轻柔的落地阴影；上方约四成区域没有物体，给手机时钟留出空间，不画云朵图案或装饰星星。\\n配色方向：奶油白与浅雾蓝构成背景，哆啦A梦使用干净清晰的经典蓝白色，红鼻子与项圈、黄色铃铛只占很小面积；铃铛不需要闪亮高光，保持平整、克制的色彩关系。\\n\\n以清晰的二次元插画造型表达主体。保留角色的标志性轮廓、发型、服装、道具与必要的面部特征；不要为了简化而画错角色，也不要无关地增加角色、装饰或复杂场景。主色块尽量组织为 3–5 组，不把必要的角色固有色机械删掉。\\n\\nlarge simple color masses, low visual frequency, restrained edge density, clear edge hierarchy, minimal internal contour lines, broad shadow shapes, suppress micro-texture and micro-contrast, no unnecessary specular highlights\\n\\n把最清楚的边缘和少量细节留给面部、主体外轮廓与关键道具，衣褶和环境内部线条适度合并；阴影形成宽阔、连贯的形状，背景边缘更少、更弱。画面保持清晰，不用失焦、雾化、过曝或低清晰度模拟简洁；角色也不要退化成图标或无特征的剪影。\\n\\n根据实际画幅重新组织构图，而不是把同一构图强行裁切或拉伸。横屏电脑壁纸：主体偏右或右下，左侧约三分之一至五分之二保持低对比度、低细节，便于放桌面图标。竖屏手机壁纸：主体置于中下部，上方约三分之一保持低细节，避开时钟区域，底部留一点呼吸空间。留白应自然融入环境，不画占位框、设备边框、时钟或应用图标。脸和关键道具不要贴边或被裁断。\\n\\n除非用户明确要求，不添加文字、标题、字幕、标志、水印、拼贴边框、密集粒子、细碎纹理、发丝堆叠、闪亮高光或复杂背景。",
+          "aspect": "9:16",
+          "size": "945x1680",
+          "image": "https://raw.githubusercontent.com/bananahub-ai/anime-game-wallpaper-kit/main/samples/sample-gpt-image-2.5-flare-02.png",
+          "page_url": "https://github.com/bananahub-ai/anime-game-wallpaper-kit/blob/main/samples/sample-gpt-image-2.5-flare-02.png"
+        },
+        {
+          "file": "samples/sample-gpt-image-2.5-flare-03.png",
+          "provider": "openai-compatible",
+          "model": "gpt-image-2.5-flare",
+          "prompt_variant": "base",
+          "prompt": "生成一张构图和色彩非常干净的16:9 横屏电脑壁纸，壁纸的主要内容是《葬送的芙莉莲》的芙莉莲，银白色长发与双马尾、尖耳朵、绿色眼睛，穿白色配金色边缘的披肩与服装，站在画面右侧的缓坡上，轻轻扶着带红色宝石的法杖，安静地望向左侧远方；保留角色发型、精灵耳朵和法杖轮廓，不出现其他人物。\\n场景与情绪：严格简化的平面丘陵背景，只由三个大形状构成：一整块无云的象牙白天空、一条轮廓平缓连续的蓝灰色远山、一整片无纹理的鼠尾草绿近坡。每个背景形状内部都是均匀色面，山与地面的边界只有少量清楚的曲线；地面不画一根草叶，不画树、花、岩石、城镇、云彩、太阳、光束、雾气或纸张颗粒。不是写实风景，也不是细节丰富的动画电影场景；用平整的大色块支撑角色，不用风景细节制造氛围。左侧保持完整、安静。\\n配色方向：温润的象牙白天空、低饱和鼠尾草绿草坡与蓝灰色远山形成大色块，人物银白头发与白色披肩有轻微明度区分，少量暗金服装边缘和法杖红色宝石作为克制的点色。\\n\\n以清晰的二次元插画造型表达主体。保留角色的标志性轮廓、发型、服装、道具与必要的面部特征；不要为了简化而画错角色，也不要无关地增加角色、装饰或复杂场景。主色块尽量组织为 3–5 组，不把必要的角色固有色机械删掉。\\n\\nlarge simple color masses, low visual frequency, restrained edge density, clear edge hierarchy, minimal internal contour lines, broad shadow shapes, suppress micro-texture and micro-contrast, no unnecessary specular highlights\\n\\n把最清楚的边缘和少量细节留给面部、主体外轮廓与关键道具，衣褶和环境内部线条适度合并；阴影形成宽阔、连贯的形状，背景边缘更少、更弱。画面保持清晰，不用失焦、雾化、过曝或低清晰度模拟简洁；角色也不要退化成图标或无特征的剪影。\\n\\n根据实际画幅重新组织构图，而不是把同一构图强行裁切或拉伸。横屏电脑壁纸：主体偏右或右下，左侧约三分之一至五分之二保持低对比度、低细节，便于放桌面图标。竖屏手机壁纸：主体置于中下部，上方约三分之一保持低细节，避开时钟区域，底部留一点呼吸空间。留白应自然融入环境，不画占位框、设备边框、时钟或应用图标。脸和关键道具不要贴边或被裁断。\\n\\n除非用户明确要求，不添加文字、标题、字幕、标志、水印、拼贴边框、密集粒子、细碎纹理、发丝堆叠、闪亮高光或复杂背景。",
+          "aspect": "16:9",
+          "size": "1680x945",
+          "image": "https://raw.githubusercontent.com/bananahub-ai/anime-game-wallpaper-kit/main/samples/sample-gpt-image-2.5-flare-03.png",
+          "page_url": "https://github.com/bananahub-ai/anime-game-wallpaper-kit/blob/main/samples/sample-gpt-image-2.5-flare-03.png"
+        }
+      ],
+      "sample_image": "https://raw.githubusercontent.com/bananahub-ai/anime-game-wallpaper-kit/main/samples/sample-gpt-image-2.5-flare-01.png",
+      "sample_image_page_url": "https://github.com/bananahub-ai/anime-game-wallpaper-kit/blob/main/samples/sample-gpt-image-2.5-flare-01.png",
+      "repo": "bananahub-ai/anime-game-wallpaper-kit",
+      "repo_url": "https://github.com/bananahub-ai/anime-game-wallpaper-kit",
+      "branch": "main",
+      "distribution": "remote",
+      "template_root": "",
+      "template_path": "",
+      "template_url": "https://github.com/bananahub-ai/anime-game-wallpaper-kit/tree/main",
+      "official": true,
+      "catalog_source": "curated",
+      "use_cmd": "/bananahub use clean-anime-wallpaper",
+      "install_target": "bananahub-ai/anime-game-wallpaper-kit",
+      "install_cmd": "bananahub add bananahub-ai/anime-game-wallpaper-kit",
+      "primary_action": "install",
+      "primary_cmd": "bananahub add bananahub-ai/anime-game-wallpaper-kit",
+      "install_required": true,
+      "usage_stats_url": "https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Fanime-game-wallpaper-kit&template_id=clean-anime-wallpaper",
+      "created": "2026-09-26",
+      "updated": "2026-09-26",
       "pinned": false,
       "pinned_rank": null,
       "featured": false,

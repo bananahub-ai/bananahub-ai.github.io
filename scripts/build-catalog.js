@@ -610,6 +610,7 @@ function deriveRecommendedModel(providers) {
       const modelId = canonicalModelId(model.id);
       if (!modelId) continue;
       const quality = String(model.quality || '').trim().toLowerCase();
+      if (model.tested === false || !['best', 'good', 'ok', 'tested'].includes(quality)) continue;
       const candidate = {
         provider: provider.id || '',
         model: modelId,

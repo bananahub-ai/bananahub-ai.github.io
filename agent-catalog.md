@@ -1,6 +1,6 @@
 # BananaHub Agent Catalog
 
-Generated: 2026-09-26T10:45:34.798Z
+Generated: 2026-09-26T14:14:48.731Z
 
 BananaHub is the installable template network for BananaHub Skill.
 Use `catalog.json` for structured access. This markdown file is a readable digest of the merged catalog.
@@ -15,7 +15,7 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Discovered Catalog JSON: https://bananahub.ai/catalog-discovered.json
 - llms.txt: https://bananahub.ai/llms.txt
 
-## Curated Templates (14)
+## Curated Templates (15)
 
 ### app-web-logo-system
 - Title: App and Web Logo Workflow / App/Web Logo 生成工作流
@@ -114,6 +114,26 @@ Use `catalog.json` for structured access. This markdown file is a readable diges
 - Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Fbananahub-skill&template_id=background-replace-edit
 - Template Source: https://github.com/bananahub-ai/bananahub-skill/tree/main/references/templates/background-replace-edit
 - Preview Image: https://raw.githubusercontent.com/bananahub-ai/bananahub-skill/main/references/templates/background-replace-edit/samples/sample-gpt-image-2-01.png
+
+### clean-anime-wallpaper
+- Title: Clean Color-Mass Anime and Game Wallpaper / 清爽大色块动漫游戏壁纸
+- Type: prompt
+- Profile: illustration
+- Difficulty: beginner
+- Source Layer: curated
+- Distribution: remote
+- License: CC-BY-4.0
+- Official: yes
+- Featured: no
+- Pinned: no
+- Tags: 壁纸, 动漫, 游戏, 二次元, 大色块, 电脑壁纸, 手机壁纸, anime, wallpaper
+- Description: 适合动漫角色、游戏角色和二次元场景的清爽壁纸。重点不是把主体缩成一个小图标，也不是把背景虚化，而是用较少的大色块组织构图，把有限的细节留给角色辨识和视觉焦点。 从用户原始提示词发展而来，完整保留其英文视觉约束。默认不添加标题、台词、装饰颗粒或海报元素。只填主体即可使用；配色、场景和画幅按需调整。
+- Primary Action: install
+- Primary Command: `bananahub add bananahub-ai/anime-game-wallpaper-kit`
+- Install Command: `bananahub add bananahub-ai/anime-game-wallpaper-kit`
+- Usage Stats: https://worker.bananahub.ai/api/usage-stats?repo=bananahub-ai%2Fanime-game-wallpaper-kit&template_id=clean-anime-wallpaper
+- Template Source: https://github.com/bananahub-ai/anime-game-wallpaper-kit/tree/main
+- Preview Image: https://raw.githubusercontent.com/bananahub-ai/anime-game-wallpaper-kit/main/samples/sample-gpt-image-2.5-flare-01.png
 
 ### consistent-character-storyboard
 - Title: Consistent Character Storyboard Workflow / 角色一致性分镜工作流

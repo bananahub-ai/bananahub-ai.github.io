@@ -2,6 +2,13 @@
   "version": "1.0.0",
   "repos": [
     {
+      "repo": "bananahub-ai/anime-game-wallpaper-kit",
+      "type": "official",
+      "local_path": "../anime-game-wallpaper-kit",
+      "path": "",
+      "official": true
+    },
+    {
       "repo": "bananahub-ai/bananahub-skill",
       "type": "builtin",
       "local_path": "../bananahub-skill",
