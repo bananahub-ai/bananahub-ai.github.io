@@ -51,4 +51,4 @@ Ecosystem links:
 - Template format spec: https://github.com/bananahub-ai/bananahub-skill/blob/main/references/template-format-spec.md
 
 Current catalog summary: 17 templates total, 5 bundled, 12 remote, 15 curated, 2 discovered, 0 pinned, 0 featured.
-Generated: 2026-11-10T14:15:50.624Z
+Generated: 2026-11-11T13:29:45.252Z
